@@ -6,12 +6,12 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:28 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/24 12:09:10 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/26 11:05:51 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include "version.h"
+#include "verbose.h"
 
 static inline void _printBitcoinExchange(void) {
 std::cout << " ____         __                              ____                  __                                          \n";
@@ -29,6 +29,6 @@ int main(void)
 {
 	_printBitcoinExchange();
 	PRT_VER;
-
+	
 	return 0;
 }

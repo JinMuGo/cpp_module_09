@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:35 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/24 12:05:42 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/26 11:02:09 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 #define BITCOINEXCHANGE_H
 
 #include <iostream>
+#include <sstream>
+#include <map>
 #include "color.h"
+#include "verbose.h"
 
 #define BTC_DFLT_CTOR GREEN "- BitcoinExchange: Default constructor called" RESET
 #define BTC_CTOR DARK_GREEN "- BitcoinExchange: constructor called" RESET

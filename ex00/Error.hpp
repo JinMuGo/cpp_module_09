@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Date.hpp                                           :+:      :+:    :+:   */
+/*   Error.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/27 15:04:30 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 16:17:10 by jgo              ###   ########.fr       */
+/*   Created: 2023/07/27 14:11:41 by jgo               #+#    #+#             */
+/*   Updated: 2023/07/27 17:53:31 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATE_HPP
-#define DATE_HPP
+#ifndef ERROR_HPP
+#define ERROR_HPP
 
-#include "Date.h"
+#include "Error.h"
 
-class Date {
+class Error : public std::exception {
    private:
+	const std::string _prompt;
+	const std::string _func;
+	const std::string _file;
+	const std::string _full;
+	Error();
+
    public:
-	Date();
-	Date(const Date& obj);
-	~Date();
-	Date& operator=(const Date& obj);
+	Error(const Error& obj);
+	Error(const char* prompt, const char* func, const char* file);
+	virtual ~Error() throw();
+	Error& operator=(const Error& obj);
+	const char* what() const throw();
 };
 
 #endif
-

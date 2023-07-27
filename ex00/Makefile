@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 19:34:14 by jgo               #+#    #+#              #
-#    Updated: 2023/07/25 10:09:23 by jgo              ###   ########.fr        #
+#    Updated: 2023/07/27 17:00:06 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,11 @@ include ../make_config/Rules.mk
 include ../make_config/Funcs.mk
 include ../make_config/Flags.mk
 
-SRCS := main.cpp
+SRCS := main.cpp \
+		Error.cpp \
+		BitcoinExchange.cpp \
+		BitcoinExchangeDataBase.cpp \
+
 
 NAME :=	btc
 

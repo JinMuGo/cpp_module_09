@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 09:44:26 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/26 11:05:04 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 20:27:41 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 
 #include "color.h"
 
+#ifndef CHK_VER
+#define CHK_VER(ver) (ver == 199711 ? "C++98" : "Not C++98")
+#endif
+
 #ifndef PRT_VER
-#define PRT_VER std::cout << "cpp version: " YELLOW << __cplusplus << RESET "\n"
+#define PRT_VER std::cout << "cpp version: " YELLOW << CHK_VER(__cplusplus)  << RESET "\n"
 #endif
 
 #ifndef V

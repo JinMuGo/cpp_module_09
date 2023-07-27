@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:31 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 17:46:19 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 20:10:38 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ class BitcoinExchange {
 		DataBase(const DataBase& obj);
 		DataBase& operator=(const DataBase& obj);
 		std::map<Date, double>* loadDataBase(const std::string& arg);
+
+		static void checkCsvSuf(const std::string &arg);
 	};
 
 	DataBase _database;

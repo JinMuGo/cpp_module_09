@@ -6,12 +6,13 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:28 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 17:50:05 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 20:26:48 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include "verbose.h"
+#include <unistd.h>
 
 static inline void _printBitcoinExchange(void) {
 	std::cout << " ____         __                              ____                  __                                          \n";
@@ -26,13 +27,26 @@ static inline void _printBitcoinExchange(void) {
 	PRT_VER;
 }
 
+static inline std::string judgeDataPath()
+{
+	const char *getCwd = getcwd(NULL, 0);
+
+	if (getCwd == NULL)
+		BitcoinExchange::error(std::strerror(errno), __func__, __FILE__);
+	const std::string curPath = getCwd;
+
+	if (curPath.find("ex00"))
+		return "./ex00/test_file/data.csv";
+	return "./test_file/data.csv";
+}
+
 int main(int argc, char **argv)
 {
 	_printBitcoinExchange();
 	try {
 		if (argc != 2)
 			BitcoinExchange::error(ARG_NUM_ERR, __func__, __FILE__);
-		BitcoinExchange btc("./test_file/data.csv");
+		BitcoinExchange btc(judgeDataPath());
 		btc.exchange(argv[1]);
 	}
 	catch(const std::exception& e)	{

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:51:25 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 17:46:14 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 20:13:05 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,19 @@ BitcoinExchange::DataBase& BitcoinExchange::DataBase::operator=(const DataBase& 
 	return *this;
 }
 
-// 파일의 맨처음에 포맷을 정의했다고 가정. 처음에 나온 포맷을 따라간다.
-std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::string& arg) {
+void BitcoinExchange::DataBase::checkCsvSuf(const std::string& arg) {
 	if (arg.substr(arg.length() - 4) != ".csv")
 		throw BitcoinExchange::error(DATA_SUR_ERR, __func__, __FILE__);
+}
+
+// 파일의 맨처음에 포맷을 정의했다고 가정. 처음에 나온 포맷을 따라간다.
+std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::string& arg) {
+	checkCsvSuf(arg);
 	std::ifstream dataFile(arg, std::ifstream::in | std::ifstream::binary);
 
 	if (dataFile.fail())
 		throw BitcoinExchange::error(FILE_OPEN_ERR, __func__, __FILE__);
+		std::cout << "this?" << std::endl;
 	std::map<Date, double>* dataBase = new std::map<Date, double>;
 	std::string format;
 

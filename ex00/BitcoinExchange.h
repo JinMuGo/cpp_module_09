@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:35 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 12:40:44 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 18:33:14 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <cstring>
 #include <cstdlib>
 #include <map>
 #include "color.h"

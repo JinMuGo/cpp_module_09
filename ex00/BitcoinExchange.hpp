@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:31 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 12:45:53 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 17:29:00 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "BitcoinExchangeDataBase.h"
 
 class BitcoinExchange {
-   private:
+   public:
 	class DataBase {
 	   private:
 		const std::map<Date, double>* _data;
@@ -31,21 +31,27 @@ class BitcoinExchange {
 		DataBase& operator=(const DataBase& obj);
 		std::map<Date, double>* loadDataBase(const std::string& arg);
 
-		static void parseData(const std::string &line, std::map<Date, double> *dataBase);
-		static void checkCsvSuf(const std::string &arg);
+		static void parseData(const std::string& line, std::map<Date, double>* dataBase);
+		static void checkCsvSuf(const std::string& arg);
+		const std::map<Date, double>* getData(void) const;
+
+		const double& findRate(const Date& date) const;
 	};
 
-	DataBase _database;
-	std::map<Date, float>* _input;
-	BitcoinExchange();
-
-   public:
 	BitcoinExchange(const std::string& arg);
 	BitcoinExchange(const BitcoinExchange& obj);
 	BitcoinExchange& operator=(const BitcoinExchange& obj);
 	~BitcoinExchange();
+	void exchange(const std::string& path);
+	DataBase getDataBase(void) const;
+
 	static Error error(const char* msg, const char* func, const char* file);
-	void exchange(const std::string& arg);
+	static void checkInputLine(const char* endptr, const double& val);
+
+   private:
+	DataBase _database;
+	static const std::string kInputFormat;
+	BitcoinExchange();
 };
 
 #endif

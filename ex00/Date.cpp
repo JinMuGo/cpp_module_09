@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:07:00 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 13:47:27 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 16:41:19 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ Date::Date(const std::string& format) : _str(format) {
 
 	dateStream >> this->_year >> dash1 >> this->_month >> dash2 >> this->_day;
 	if (dateStream.eof() == false || this->isValidDate(dash1, dash2) == false)
-		throw error(INVALID_DATE_FORMAT, __func__, __FILE__);
+	{
+		const std::string prompt = INVALID_DATE_FORMAT + format;
+		throw error(prompt.c_str(), __func__, __FILE__);
+	}
 }
 Date::~Date() {
 	VERBOSE(DATE_DTOR);
 }
 Date& Date::operator=(const Date& obj) {
 	VERBOSE(DATE_CPY_ASGMT_OP_CALL);
-	if (this != &obj)
-	{
+	if (this != &obj) {
 		this->_year = obj.getYear();
 		this->_month = obj.getMonth();
 		this->_day = obj.getDay();
@@ -108,5 +110,5 @@ bool Date::operator!=(const Date& obj) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Date& obj) {
-	return os << "Year: " << obj.getYear()  << " Month: " << obj.getMonth() << " Day: " << obj.getDay();
+	return os << "Year: " << obj.getYear() << " Month: " << obj.getMonth() << " Day: " << obj.getDay();
 }

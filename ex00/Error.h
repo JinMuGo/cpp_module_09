@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:12:11 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 12:32:29 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 16:47:24 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@
 #define INVALID_DATA_FORMAT "Invalid data format"
 #define INVALID_DATA_LINE_FORMAT "Invalid data line format"
 
-#define INVALID_DATE_FORMAT "Invalid Date format"
+#define INVALID_DATE_FORMAT "Invalid Date format: "
 
+#define INVALID_INPUT_FORMAT "Invalid Input format"
+#define INVALID_INPUT_LINE_FORMAT "Invalid Input line format"
+
+#define NOT_POSITIVE "not a positive number."
+#define TOO_LARGE "too large number the value is must be 0 and 1000"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:51:25 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 13:46:39 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 17:19:56 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ BitcoinExchange::DataBase::DataBase(const std::string& arg) : _data(loadDataBase
 
 BitcoinExchange::DataBase::~DataBase() {
 	VERBOSE(DATA_DTOR);
+	if (this->_data)
+		delete _data;
 }
 BitcoinExchange::DataBase::DataBase(const DataBase& obj) {
 	VERBOSE(DATA_CPY_CTOR);
@@ -30,9 +32,16 @@ BitcoinExchange::DataBase::DataBase(const DataBase& obj) {
 }
 BitcoinExchange::DataBase& BitcoinExchange::DataBase::operator=(const DataBase& obj) {
 	VERBOSE(DATE_CPY_ASGMT_OP_CALL);
-	if (this == &obj)
-		return *this;
+	if (this == &obj) {
+		if (this->_data)
+			delete this->_data;
+		this->_data = new std::map<Date, double>(*obj.getData());
+	}
 	return *this;
+}
+
+const std::map<Date, double>* BitcoinExchange::DataBase::getData(void) const {
+	return this->_data;
 }
 
 void BitcoinExchange::DataBase::checkCsvSuf(const std::string& arg) {
@@ -43,23 +52,16 @@ void BitcoinExchange::DataBase::checkCsvSuf(const std::string& arg) {
 void BitcoinExchange::DataBase::parseData(const std::string& line, std::map<Date, double>* dataBase) {
 	const std::size_t pivot = line.find(',');
 	if (pivot != line.rfind(','))
-	{
-		delete dataBase;
 		throw BitcoinExchange::error(INVALID_DATA_LINE_FORMAT, __func__, __FILE__);
-	}
 	const std::string first = line.substr(0, pivot);
 	const std::string second = line.substr(pivot + 1);
 	char* endptr;
 	const double rate = strtod(second.c_str(), &endptr);
 	if (*endptr)
-	{
-		delete dataBase;
 		throw BitcoinExchange::error(INVALID_DATA_LINE_FORMAT, __func__, __FILE__);
-	}
 	dataBase->insert(std::make_pair(Date(first), rate));
 }
 
-// 파일의 맨처음에 포맷을 정의했다고 가정. 처음에 나온 포맷을 따라간다.
 std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::string& arg) {
 	checkCsvSuf(arg);
 	std::ifstream dataFile(arg, std::ifstream::in | std::ifstream::binary);
@@ -74,11 +76,11 @@ std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::strin
 	for (std::string line; std::getline(dataFile, line);) {
 		parseData(line, dataBase);
 	}
-
-	std::map<Date, double>::iterator it;
-    for (it = dataBase->begin(); it != dataBase->end(); ++it) {
-        std::cout << "Key: " << it->first << ", Value: " << it->second << std::endl;
-    }
-
 	return dataBase;
+}
+
+const double& BitcoinExchange::DataBase::findRate(const Date& date) const {
+	if (_data->find(date) != _data->end())
+		return _data->at(date);
+	return (*(--_data->upper_bound(date))).second;
 }

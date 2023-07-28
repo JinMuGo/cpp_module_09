@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:31 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 20:10:38 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 12:45:53 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ class BitcoinExchange {
 	class DataBase {
 	   private:
 		const std::map<Date, double>* _data;
-		static const std::string kDate;
-		static const std::string kExchangeRate;
+		static const std::string kFormat;
 
 	   public:
 		DataBase();
@@ -32,6 +31,7 @@ class BitcoinExchange {
 		DataBase& operator=(const DataBase& obj);
 		std::map<Date, double>* loadDataBase(const std::string& arg);
 
+		static void parseData(const std::string &line, std::map<Date, double> *dataBase);
 		static void checkCsvSuf(const std::string &arg);
 	};
 

@@ -6,15 +6,18 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:03:38 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 15:04:18 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 13:01:42 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATE_H
 #define DATE_H
 
+#include <sstream>
 #include "color.h"
 #include "verbose.h"
+
+#include "Error.hpp"
 
 #define DATE_CTOR DARK_GREEN "- Date: constructor called" RESET
 #define DATE_DFLT_CTOR GREEN "- Date: Default constructor called" RESET

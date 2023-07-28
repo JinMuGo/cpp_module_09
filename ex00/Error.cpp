@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:13:17 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 17:54:42 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 13:15:51 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ Error& Error::operator=(const Error& obj) {
 		*const_cast<std::string*>(&this->_file) = obj._file;
 		*const_cast<std::string*>(&this->_func) = obj._func;
 		*const_cast<std::string*>(&this->_prompt) = obj._prompt;
+		*const_cast<std::string*>(&this->_full) = obj._full;
 	}
 	return (*this);
 }

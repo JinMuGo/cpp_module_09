@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:04:30 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 16:17:10 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 13:19:02 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,32 @@
 
 class Date {
    private:
-   public:
+	const std::string _str;
+	int _year;
+	int _month;
+	int _day;
+
 	Date();
+   public:
+	Date(const std::string& format);
 	Date(const Date& obj);
 	~Date();
 	Date& operator=(const Date& obj);
+
+	bool isValidDate(const char &dash1, const char &dash2);
+	static Error error(const char* msg, const char* func, const char* file);
+	bool operator<(const Date& obj) const;
+	bool operator>(const Date& obj) const;
+	bool operator<=(const Date& obj) const;
+	bool operator>=(const Date& obj) const;
+	bool operator==(const Date& obj) const;
+	bool operator!=(const Date& obj) const;
+
+	int getYear() const;
+	int getMonth() const;
+	int getDay() const;
 };
 
-#endif
+std::ostream& operator<<(std::ostream &os, const Date& obj);
 
+#endif

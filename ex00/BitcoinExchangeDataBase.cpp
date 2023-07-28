@@ -6,14 +6,13 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:51:25 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 20:13:05 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 13:30:52 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-const std::string BitcoinExchange::DataBase::kDate = "date";
-const std::string BitcoinExchange::DataBase::kExchangeRate = "exchange_rate";
+const std::string BitcoinExchange::DataBase::kFormat = "date,exchange_rate";
 
 BitcoinExchange::DataBase::DataBase(void) : _data(NULL) {
 	VERBOSE(DATA_DFLT_CTOR);
@@ -41,6 +40,25 @@ void BitcoinExchange::DataBase::checkCsvSuf(const std::string& arg) {
 		throw BitcoinExchange::error(DATA_SUR_ERR, __func__, __FILE__);
 }
 
+void BitcoinExchange::DataBase::parseData(const std::string& line, std::map<Date, double>* dataBase) {
+	const std::size_t pivot = line.find(',');
+	if (pivot != line.rfind(','))
+	{
+		delete dataBase;
+		throw BitcoinExchange::error(INVALID_DATA_LINE_FORMAT, __func__, __FILE__);
+	}
+	const std::string first = line.substr(0, pivot);
+	const std::string second = line.substr(pivot + 1);
+	char* endptr;
+	const double rate = strtod(second.c_str(), &endptr);
+	if (*endptr)
+	{
+		delete dataBase;
+		throw BitcoinExchange::error(INVALID_DATA_LINE_FORMAT, __func__, __FILE__);
+	}
+	dataBase->insert(std::make_pair(Date(first), rate));
+}
+
 // 파일의 맨처음에 포맷을 정의했다고 가정. 처음에 나온 포맷을 따라간다.
 std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::string& arg) {
 	checkCsvSuf(arg);
@@ -48,15 +66,19 @@ std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::strin
 
 	if (dataFile.fail())
 		throw BitcoinExchange::error(FILE_OPEN_ERR, __func__, __FILE__);
-		std::cout << "this?" << std::endl;
-	std::map<Date, double>* dataBase = new std::map<Date, double>;
 	std::string format;
-
 	std::getline(dataFile, format);
-	if (format.find(kDate) == std::string::npos || format.find(kExchangeRate) == std::string::npos)
-		throw BitcoinExchange::error(INVALID_FORMAT, __func__, __FILE__);
+	if (format != this->kFormat)
+		throw BitcoinExchange::error(INVALID_DATA_FORMAT, __func__, __FILE__);
+	std::map<Date, double>* dataBase = new std::map<Date, double>;
 	for (std::string line; std::getline(dataFile, line);) {
-		std::cout << line << std::endl;
+		parseData(line, dataBase);
 	}
+
+	std::map<Date, double>::iterator it;
+    for (it = dataBase->begin(); it != dataBase->end(); ++it) {
+        std::cout << "Key: " << it->first << ", Value: " << it->second << std::endl;
+    }
+
 	return dataBase;
 }

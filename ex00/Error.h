@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:12:11 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/27 17:22:22 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 12:32:29 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@
 #define ARG_NUM_ERR "The number of arguments must be 2."
 #define DATA_SUR_ERR "The data file surfix must be .csv"
 #define FILE_OPEN_ERR "File open error"
-#define INVALID_FORMAT "Invalid format"
+#define INVALID_DATA_FORMAT "Invalid data format"
+#define INVALID_DATA_LINE_FORMAT "Invalid data line format"
+
+#define INVALID_DATE_FORMAT "Invalid Date format"
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:07:00 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 13:26:39 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 13:47:27 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ Date::~Date() {
 Date& Date::operator=(const Date& obj) {
 	VERBOSE(DATE_CPY_ASGMT_OP_CALL);
 	if (this != &obj)
-		return *this;
+	{
+		this->_year = obj.getYear();
+		this->_month = obj.getMonth();
+		this->_day = obj.getDay();
+	}
 	return *this;
 }
 

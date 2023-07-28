@@ -5,29 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/23 14:05:59 by jgo               #+#    #+#              #
-#    Updated: 2023/07/28 18:32:22 by jgo              ###   ########.fr        #
+#    Created: 2023/04/07 19:34:14 by jgo               #+#    #+#              #
+#    Updated: 2023/07/28 18:39:31 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include ./make_config/Color.mk
-include ./make_config/Funcs.mk
-include ./make_config/Flags.mk
-include ./make_config/Rules.mk
+include ../make_config/Color.mk
+include ../make_config/Rules.mk
+include ../make_config/Funcs.mk
+include ../make_config/Flags.mk
 
-PROJECT_NAME := cpp_module_09
+SRCS := main.cpp
 
-DIRS := ex00 ex01
+NAME :=	RPN
 
-$(DIRS):
-	$(MAKE) -C $@ $(J)
+OBJS := $(SRCS:.cpp=.o)
+DEPS := $(SRCS:.cpp=.d)
+-include $(DEPS)
 
-all bonus:
-	$(Q)$(call color_printf,$(YELLOW),$(PROJECT_NAME),🎯 Start compiling)
-	$(MAKE) $(DIRS)
-	$(Q)$(call color_printf,$(GREEN),$(PROJECT_NAME),✨ compiled!)
-
-fclean clean re:
-	$(Q)$(foreach dir, $(DIRS), $(MAKE) -C $(dir) $@;)
-
-.PHONY: all clean fclean re bonus $(DIRS)
+include ../make_config/Recipes.mk

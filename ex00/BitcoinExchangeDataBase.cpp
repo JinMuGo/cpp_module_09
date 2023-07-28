@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:51:25 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 17:19:56 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 18:36:43 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void BitcoinExchange::DataBase::parseData(const std::string& line, std::map<Date
 
 std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::string& arg) {
 	checkCsvSuf(arg);
-	std::ifstream dataFile(arg, std::ifstream::in | std::ifstream::binary);
+	std::ifstream dataFile(arg.c_str(), std::ifstream::in | std::ifstream::binary);
 
 	if (dataFile.fail())
 		throw BitcoinExchange::error(FILE_OPEN_ERR, __func__, __FILE__);

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:48 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 17:14:44 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/28 18:34:57 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void BitcoinExchange::checkInputLine(const char* endptr, const double& val) {
 }
 
 void BitcoinExchange::exchange(const std::string& path) {
-	std::ifstream inputFile(path, std::ifstream::in | std::ifstream::binary);
+	std::ifstream inputFile(path.c_str(), std::ifstream::in | std::ifstream::binary);
 	std::string format;
 
 	if (inputFile.fail())

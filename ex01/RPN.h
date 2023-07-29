@@ -6,15 +6,18 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 18:40:48 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 18:42:29 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 16:59:35 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_H
 #define RPN_H
 
+#include <iostream>
 #include <stack>
+#include <cstdlib>
 
+#include "Error.hpp"
 #include "color.h"
 #include "verbose.h"
 

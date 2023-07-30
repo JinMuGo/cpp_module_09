@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:28 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 15:50:07 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/30 15:59:08 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static inline std::string _judgeDataPath()
 	if (getCwd == NULL)
 		BitcoinExchange::error(std::strerror(errno), __func__, __FILE__);
 	const std::string curPath = getCwd;
+	delete getCwd;
 
 	if (curPath.find("ex00") == std::string::npos)
 		return "./ex00/test_file/data.csv";

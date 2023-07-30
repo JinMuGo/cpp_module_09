@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:51:25 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 18:36:43 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/30 15:52:16 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,5 @@ std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::strin
 const double& BitcoinExchange::DataBase::findRate(const Date& date) const {
 	if (_data->find(date) != _data->end())
 		return _data->at(date);
-	return (*(--_data->upper_bound(date))).second;
+	return (*(--_data->lower_bound(date))).second;
 }

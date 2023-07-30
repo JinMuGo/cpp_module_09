@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:22:00 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 18:23:38 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/30 23:22:48 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 
 #include "Deq.h"
 
-class Deq : public std::deque<int> {
+class Deq : public std::deque<int>, public ImyContainer {
    private:
-		const int &_ac;
-		const char **&_av;
+	Deq();
 
    public:
-	Deq();
 	Deq(const Deq& obj);
+	Deq(const int& ac, const char**& av);
 	virtual ~Deq();
 	Deq& operator=(const Deq& obj);
-	void FJmergeInsertionsort();
+	virtual void FJmergeInsertionsort();
 };
+
+std::ostream& operator<<(std::ostream& os, const Deq& obj);
 
 #endif

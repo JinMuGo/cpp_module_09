@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:21:39 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 18:23:19 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/30 23:23:22 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 
 #include "Vec.h"
 
-class Vec : public std::vector<int> {
+class Vec : public std::vector<int>, public ImyContainer {
    private:
-	const int &_ac;
-	const char **&_av;
+	Vec();
 
    public:
-	Vec();
+	Vec(const int& ac, const char**& av);
 	Vec(const Vec& obj);
 	virtual ~Vec();
 	Vec& operator=(const Vec& obj);
-	void FJmergeInsertionsort();
+	virtual void FJmergeInsertionsort();
 };
 
 std::ostream& operator<<(std::ostream& os, const Vec& obj);

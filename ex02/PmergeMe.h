@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:21 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 18:24:08 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/30 23:31:12 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define PMERGEME_H
 
 #include <iostream>
+#include <ctime>
 #include "Error.hpp"
 #include "Deq.hpp"
 #include "Vec.hpp"

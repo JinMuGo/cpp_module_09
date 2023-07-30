@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 17:39:17 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/30 23:43:22 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 Parser::Parser() {
 	VERBOSE(PRS_DFLT_CTOR);
 }
+
 Parser::Parser(const Parser& obj) {
 	VERBOSE(PRS_CPY_CTOR);
 }
+
 Parser::~Parser() {
 	VERBOSE(PRS_DTOR);
 }
+
 Parser& Parser::operator=(const Parser& obj) {
 	VERBOSE(PRS_CPY_ASGMT_OP_CALL);
 }
@@ -56,10 +59,10 @@ bool Parser::_containsAny(const std::string& str, const char& c) {
 	return false;
 }
 
-inline void Parser::_ParseVec(std::vector<int>& vec, char** av) {
+inline void Parser::_ParseVec(std::vector<int>& vec, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
 }
 
-inline void Parser::_ParseDeq(std::deque<int>& deq, char** av) {
+inline void Parser::_ParseDeq(std::deque<int>& deq, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
 }

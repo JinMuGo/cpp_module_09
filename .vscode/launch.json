@@ -8,10 +8,10 @@
 			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/RPN",
-			"args": ["8 9 * 9 - 9 - 9 - 4 - 1 +"],
+			"program": "${workspaceFolder}/ex00/btc",
+			"args": ["./test_file/input.txt"],
 			"stopAtEntry": false,
-			"cwd": "${fileDirname}",
+			"cwd": "${workspaceFolder}/ex00",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb"

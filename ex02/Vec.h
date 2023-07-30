@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.h                                              :+:      :+:    :+:   */
+/*   Vec.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/28 18:40:48 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 18:24:52 by jgo              ###   ########.fr       */
+/*   Created: 2023/07/30 16:21:32 by jgo               #+#    #+#             */
+/*   Updated: 2023/07/30 18:24:31 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_H
-#define RPN_H
+#ifndef VEC_H
+#define VEC_H
 
 #include <iostream>
-#include <stack>
-#include <cstdlib>
+#include <vector>
+#include "Parser.hpp"
 
 #include "Error.hpp"
 #include "color.h"
 #include "verbose.h"
 
-#define RPN_DFLT_CTOR GREEN "- RPN: Default constructor called" RESET
-#define RPN_CTOR DARK_GREEN "- RPN: constructor called" RESET
-#define RPN_CPY_CTOR CYAN "- RPN: Copy constructor called" RESET
-#define RPN_CPY_ASGMT_OP_CALL DARK_CYAN "- RPN: Copy assignment operator called" RESET
-#define RPN_DTOR ORANGE "- RPN: Destructor called" RESET
-#define RPN_MEMBER_FUNC_CALL "- RPN member function called"
+#define VEC_DFLT_CTOR GREEN "- Vec: Default constructor called" RESET
+#define VEC_CTOR DARK_GREEN "- Vec: constructor called" RESET
+#define VEC_CPY_CTOR CYAN "- Vec: Copy constructor called" RESET
+#define VEC_CPY_ASGMT_OP_CALL DARK_CYAN "- Vec: Copy assignment operator called" RESET
+#define VEC_DTOR ORANGE "- Vec: Destructor called" RESET
+#define VEC_MEMBER_FUNC_CALL "- Vec member function called"
 
 #endif

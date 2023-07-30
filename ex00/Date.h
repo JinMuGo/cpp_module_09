@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:03:38 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 13:01:42 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/30 18:24:45 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 #define DATE_CTOR DARK_GREEN "- Date: constructor called" RESET
 #define DATE_DFLT_CTOR GREEN "- Date: Default constructor called" RESET
-#define DATE_CTR LIGHT_CYAN "- Date: constructor called" RESET
 #define DATE_CPY_CTOR CYAN "- Date: Copy constructor called" RESET
 #define DATE_CPY_ASGMT_OP_CALL DARK_CYAN "- Date: Copy assignment operator called" RESET
 #define DATE_DTOR ORANGE "- Date: Destructor called" RESET

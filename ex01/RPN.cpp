@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 18:40:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/29 19:52:52 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/30 17:05:12 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,14 @@ bool RPN::containsNone(const std::string& str, const std::string& chars) {
 			return false;
 	}
 	return true;
+}
+
+bool RPN::containsAny(const std::string& str, const std::string& chars) {
+	for (std::string::const_iterator cit = str.begin(); cit != str.end(); ++cit) {
+		if (chars.find(*cit) != std::string::npos)
+			return true;
+	}
+	return false;
 }
 
 bool RPN::containsNone(const std::string& str, const char& c) {

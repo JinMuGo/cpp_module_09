@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 23:43:22 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/31 11:40:16 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ bool Parser::_containsAny(const std::string& str, const char& c) {
 
 inline void Parser::_ParseVec(std::vector<int>& vec, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
+	for (std::vector<int>::const_iterator cit = vec.begin(); cit != vec.end(); ++cit) {
+
+	}
 }
 
 inline void Parser::_ParseDeq(std::deque<int>& deq, const char**& av) {

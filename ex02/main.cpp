@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 23:00:36 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/31 11:33:51 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int main(const int ac, const char** av) {
 		pm.vecSort(ac, av);
 		pm.deqSort(ac, av);
 		pm.confirmSort();
-		std::cout << &pm.getVec() << std::endl;
-		std::cout << &pm.getDeq() << std::endl;
+		std::cout << pm.getVec() << std::endl;
+		std::cout << pm.getDeq() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}

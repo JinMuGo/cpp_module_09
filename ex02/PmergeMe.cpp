@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:36 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 23:40:05 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/31 11:36:11 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,15 @@ void PmergeMe::vecSort(const int& ac, const char**& av) {
 
 void PmergeMe::deqSort(const int& ac, const char**& av) {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
-	const std::clock_t start = std::clock(); 
+	const std::clock_t start = std::clock();
 	this->_deq.FJmergeInsertionsort();
 	const std::clock_t end = std::clock();
 	this->_deq.setElapsedTime(end - start);
 }
 
-bool PmergeMe::confirmSort(void) const {
-	// 두개의 container의 값이 같은지 확인. 같다면 true; 아니면 false;
+void PmergeMe::confirmSort(void) const {
+	// 두개의 container의 값이 같은지 확인. 같다면 before:, after출력
+	// 다르다면 error throw
 }
 
 const Vec& PmergeMe::getVec(void) const {

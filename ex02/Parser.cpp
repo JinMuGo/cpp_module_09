@@ -6,11 +6,16 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/31 11:40:16 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 10:23:32 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Parser.hpp"
+
+const std::string Parser::kNum = "0123456789";
+const std::string Parser::kOper = "-+";
+const std::string Parser::kWhiteSpace = " \t\n\v\f\r";
+const std::string Parser::kFull = Parser::kNum + Parser::kOper + Parser::kWhiteSpace;
 
 Parser::Parser() {
 	VERBOSE(PRS_DFLT_CTOR);
@@ -59,13 +64,30 @@ bool Parser::_containsAny(const std::string& str, const char& c) {
 	return false;
 }
 
-inline void Parser::_ParseVec(std::vector<int>& vec, const char**& av) {
+void Parser::_ParseVec(std::vector<int>& vec, const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
-	for (std::vector<int>::const_iterator cit = vec.begin(); cit != vec.end(); ++cit) {
-
+	for (int i = 1; i < ac; ++i) {
+		for (int j = 0; av[i][j]; ++j) {
+			if (_containsAny(Parser::kFull, av[i][j]) == false)
+				throw Error::error(INVALID_ARGS, __func__, __FILE__);
+		}
+		const int val = std::atoi(av[i]);
+		if (val == 0)
+			throw Error::error(INVALID_ARGS, __func__, __FILE__);
+		vec.push_back(val);
 	}
 }
 
-inline void Parser::_ParseDeq(std::deque<int>& deq, const char**& av) {
+void Parser::_ParseDeq(std::deque<int>& deq, const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
+	for (int i = 1; i < ac; ++i) {
+		for (int j = 0; av[i][j]; ++j) {
+			if (_containsAny(Parser::kFull, av[i][j]) == false)
+				throw Error::error(INVALID_ARGS, __func__, __FILE__);
+		}
+		const int val = std::atoi(av[i]);
+		if (val == 0)
+			throw Error::error(INVALID_ARGS, __func__, __FILE__);
+		deq.push_back(val);
+	}
 }

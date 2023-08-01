@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:22:50 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 23:30:17 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 10:24:51 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ Vec& Vec::operator=(const Vec& obj) {
 }
 
 void Vec::FJmergeInsertionsort() {
-	Parser::_ParseVec(*this, this->getAv());
+	Parser::_ParseVec(*this, this->getAc(), this->getAv());
+	
 }
 
 std::ostream& operator<<(std::ostream& os, const Vec& obj) {

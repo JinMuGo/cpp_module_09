@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:23:10 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 23:27:10 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 10:24:55 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Deq& Deq::operator=(const Deq& obj) {
 }
 
 void Deq::FJmergeInsertionsort() {
-	Parser::_ParseDeq(*this, this->getAv());
+	Parser::_ParseDeq(*this, this->getAc(), this->getAv());
 }
 
 std::ostream& operator<<(std::ostream& os, const Deq& obj) {

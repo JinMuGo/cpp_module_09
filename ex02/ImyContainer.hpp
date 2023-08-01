@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:25:37 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 23:32:20 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 10:08:32 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class ImyContainer {
 	virtual ~ImyContainer();
 	ImyContainer& operator=(const ImyContainer& obj);
 
-	const int getAc(void) const;
+	int getAc(void) const;
 	const char**& getAv(void) const;
 	std::clock_t getElapsedTime(void) const;
 	void setElapsedTime(const std::clock_t time);

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:59:59 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 23:01:28 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 10:04:10 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#include <cstdlib>
 
 #include "Error.hpp"
 #include "color.h"

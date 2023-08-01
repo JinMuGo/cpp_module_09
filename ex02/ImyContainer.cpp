@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:28:27 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 23:32:24 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 10:08:37 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ ImyContainer& ImyContainer::operator=(const ImyContainer& obj) {
 	return (*this);
 }
 
-const int ImyContainer::getAc(void) const {
+int ImyContainer::getAc(void) const {
 	return this->_ac;
 }
 

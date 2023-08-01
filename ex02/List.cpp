@@ -1,43 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Deq.cpp                                            :+:      :+:    :+:   */
+/*   List.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:23:10 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 12:45:57 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 17:28:00 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Deq.hpp"
+#include "List.hpp"
 
-Deq::Deq(const Deq& obj) : std::deque<int>(), AmyContainer(obj) {
-	VERBOSE(DEQ_CPY_CTOR);
+List::List(const List& obj) : std::list<int>(), AmyContainer(obj) {
+	VERBOSE(LIST_CPY_CTOR);
 }
 
-Deq::Deq(const int& ac, const char**& av) : std::deque<int>(), AmyContainer(ac, av) {
-	VERBOSE(DEQ_CTOR);
+List::List(const int& ac, const char**& av) : std::list<int>(), AmyContainer(ac, av) {
+	VERBOSE(LIST_CTOR);
 }
 
-Deq::~Deq() {
-	VERBOSE(DEQ_DTOR);
+List::~List() {
+	VERBOSE(LIST_DTOR);
 }
 
-Deq& Deq::operator=(const Deq& obj) {
-	VERBOSE(DEQ_CPY_ASGMT_OP_CALL);
+List& List::operator=(const List& obj) {
+	VERBOSE(LIST_CPY_ASGMT_OP_CALL);
 	if (this != &obj) {
-		this->std::deque<int>::operator=(obj);
+		this->std::list<int>::operator=(obj);
 		this->AmyContainer::operator=(obj);
 	}
 	return (*this);
 }
 
-void Deq::FJmergeInsertionsort(const int& ac, const char**& av) {
-	Parser::_ParseDeq(*this, ac, av);
+void List::FJmergeInsertionsort(const int& ac, const char**& av) {
+	Parser::_ParseList(*this, ac, av);
+	this->sort();
 }
 
-std::ostream& operator<<(std::ostream& os, const Deq& obj) {
+std::ostream& operator<<(std::ostream& os, const List& obj) {
 	return os << "Time to process a range of " << obj.getAc() - 1
-			  << " elements with std::deque : " << obj.getElapsedTime() << "ms" << std::endl;
+			  << " elements with std::list : " << obj.getElapsedTime() << "ms" << std::endl;
 }

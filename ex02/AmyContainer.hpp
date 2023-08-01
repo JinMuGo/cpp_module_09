@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ImyContainer.hpp                                   :+:      :+:    :+:   */
+/*   AmyContainer.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:25:37 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 10:08:32 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 12:42:25 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMYCONTAINER_HPP
-#define IMYCONTAINER_HPP
+#ifndef AMYCONTAINER_HPP
+#define AMYCONTAINER_HPP
 
-#include "ImyContainer.h"
+#include "AmyContainer.h"
 
-class ImyContainer {
+class AmyContainer {
    private:
 	const int& _ac;
 	const char**& _av;
 	std::clock_t _elapsed_time;
 
-	ImyContainer();
+	AmyContainer();
 
    public:
-	ImyContainer(const ImyContainer& obj);
-	ImyContainer(const int& ac, const char**& av);
-	virtual ~ImyContainer();
-	ImyContainer& operator=(const ImyContainer& obj);
+	AmyContainer(const AmyContainer& obj);
+	AmyContainer(const int& ac, const char**& av);
+	virtual ~AmyContainer();
+	AmyContainer& operator=(const AmyContainer& obj);
 
 	int getAc(void) const;
 	const char**& getAv(void) const;
 	std::clock_t getElapsedTime(void) const;
 	void setElapsedTime(const std::clock_t time);
-	virtual void FJmergeInsertionsort() = 0;
+	virtual void FJmergeInsertionsort(const int& ac, const char**& av) = 0;
 };
 
 #endif

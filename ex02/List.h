@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Deq.h                                              :+:      :+:    :+:   */
+/*   List.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:21:50 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 12:40:11 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 17:19:59 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEQ_H
-#define DEQ_H
+#ifndef LIST_H
+#define LIST_H
 
-#include <deque>
+#include <list>
 #include <iostream>
 #include "Error.hpp"
 #include "AmyContainer.hpp"
@@ -22,11 +22,11 @@
 #include "color.h"
 #include "verbose.h"
 
-#define DEQ_DFLT_CTOR GREEN "-- Deq: Default constructor called" RESET
-#define DEQ_CTOR DARK_GREEN "-- Deq: constructor called" RESET
-#define DEQ_CPY_CTOR CYAN "-- Deq: Copy constructor called" RESET
-#define DEQ_CPY_ASGMT_OP_CALL DARK_CYAN "-- Deq: Copy assignment operator called" RESET
-#define DEQ_DTOR ORANGE "-- Deq: Destructor called" RESET
-#define DEQ_MEMBER_FUNC_CALL "-- Deq member function called"
+#define LIST_DFLT_CTOR GREEN "-- List: Default constructor called" RESET
+#define LIST_CTOR DARK_GREEN "-- List: constructor called" RESET
+#define LIST_CPY_CTOR CYAN "-- List: Copy constructor called" RESET
+#define LIST_CPY_ASGMT_OP_CALL DARK_CYAN "-- List: Copy assignment operator called" RESET
+#define LIST_DTOR ORANGE "-- List: Destructor called" RESET
+#define LIST_MEMBER_FUNC_CALL "-- List member function called"
 
 #endif

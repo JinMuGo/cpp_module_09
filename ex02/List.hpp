@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Vec.hpp                                            :+:      :+:    :+:   */
+/*   List.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/30 16:21:39 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 16:56:02 by jgo              ###   ########.fr       */
+/*   Created: 2023/07/30 16:22:00 by jgo               #+#    #+#             */
+/*   Updated: 2023/08/01 17:27:19 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC_HPP
-#define VEC_HPP
+#ifndef LIST_HPP
+#define LIST_HPP
 
-#include "Vec.h"
+#include "List.h"
 
-class Vec : public std::vector<int>, public AmyContainer {
+class List : public std::list<int>, public AmyContainer {
    private:
-	Vec();
-	std::vector<std::pair<int, int> > _tmp;
+	List();
 
    public:
-	Vec(const int& ac, const char**& av);
-	Vec(const Vec& obj);
-	virtual ~Vec();
-	Vec& operator=(const Vec& obj);
+	List(const List& obj);
+	List(const int& ac, const char**& av);
+	virtual ~List();
+	List& operator=(const List& obj);
 	virtual void FJmergeInsertionsort(const int& ac, const char**& av);
 };
 
-std::ostream& operator<<(std::ostream& os, const Vec& obj);
+std::ostream& operator<<(std::ostream& os, const List& obj);
 
 #endif

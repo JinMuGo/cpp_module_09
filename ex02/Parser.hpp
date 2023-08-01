@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:01 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 10:10:53 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 17:14:13 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Parser {
 	static bool _containsAny(const std::string& str, const char& c);
 	static void _ParseVec(std::vector<int>& vec, const int& ac, const char**& av);
 	static void _ParseDeq(std::deque<int>& deq, const int& ac, const char**& av);
+	static void _ParseList(std::list<int>& list, const int& ac, const char**& av);
 };
 
 #endif

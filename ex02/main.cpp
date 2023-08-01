@@ -6,10 +6,11 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/31 11:33:51 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 17:30:59 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iomanip>
 #include "PmergeMe.hpp"
 #include "verbose.h"
 
@@ -20,6 +21,22 @@ static inline void _printPmergeMe(void) {
 	VERBOSE(" / ____/ / / / / /  __/ /  / /_/ /  __/ /  / /  __/");
 	VERBOSE("/_/   /_/ /_/ /_/\\___/_/   \\__, /\\___/_/  /_/\\___/ ");
 	VERBOSE("                          /____/                   ");
+	PRT_VER;
+}
+
+static inline void _printUnSortArgv(const int& ac, const char**& av) {
+	std::cout << std::left << std::setw(10) << "Before: ";
+	for (int i = 1; i < ac; ++i) {
+		std::cout << av[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+static inline void _printSortArgv(const std::list<int>& list) {
+	std::cout << std::left << std::setw(10) << "After: ";
+	for (std::list<int>::const_iterator cit = list.begin(); cit != list.end(); ++cit)
+		std::cout << *cit << " ";
+	std::cout << std::endl;
 }
 
 int main(const int ac, const char** av) {
@@ -27,12 +44,19 @@ int main(const int ac, const char** av) {
 	try {
 		PmergeMe pm(ac, av);
 
+		pm.checkAv(ac, av);
 		pm.vecSort(ac, av);
 		pm.deqSort(ac, av);
+		pm.listSort(ac, av);
 		pm.confirmSort();
+		_printUnSortArgv(ac, av);
+		_printSortArgv(pm.getList());
 		std::cout << pm.getVec() << std::endl;
 		std::cout << pm.getDeq() << std::endl;
+		std::cout << pm.getList() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
+		return (EXIT_FAILURE);
 	}
+	return (EXIT_SUCCESS);
 }

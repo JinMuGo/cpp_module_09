@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 10:23:32 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 17:14:19 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ Parser::Parser() {
 
 Parser::Parser(const Parser& obj) {
 	VERBOSE(PRS_CPY_CTOR);
-}
+	*this = obj;
+};
 
 Parser::~Parser() {
 	VERBOSE(PRS_DTOR);
@@ -31,6 +32,9 @@ Parser::~Parser() {
 
 Parser& Parser::operator=(const Parser& obj) {
 	VERBOSE(PRS_CPY_ASGMT_OP_CALL);
+	if (this != &obj)
+		return (*this);
+	return (*this);
 }
 
 bool Parser::_containsNone(const std::string& str, const std::string& chars) {
@@ -89,5 +93,19 @@ void Parser::_ParseDeq(std::deque<int>& deq, const int& ac, const char**& av) {
 		if (val == 0)
 			throw Error::error(INVALID_ARGS, __func__, __FILE__);
 		deq.push_back(val);
+	}
+}
+
+void Parser::_ParseList(std::list<int>& list, const int& ac, const char**& av) {
+	VERBOSE(PRS_MEMBER_FUNC_CALL);
+	for (int i = 1; i < ac; ++i) {
+		for (int j = 0; av[i][j]; ++j) {
+			if (_containsAny(Parser::kFull, av[i][j]) == false)
+				throw Error::error(INVALID_ARGS, __func__, __FILE__);
+		}
+		const int val = std::atoi(av[i]);
+		if (val == 0)
+			throw Error::error(INVALID_ARGS, __func__, __FILE__);
+		list.push_back(val);
 	}
 }

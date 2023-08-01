@@ -6,7 +6,7 @@
 #    By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/07 19:34:14 by jgo               #+#    #+#              #
-#    Updated: 2023/08/01 10:09:31 by jgo              ###   ########.fr        #
+#    Updated: 2023/08/01 17:28:59 by jgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,11 @@ include ../make_config/Flags.mk
 SRCS := main.cpp \
 		Deq.cpp \
 		Vec.cpp \
+		List.cpp \
 		Error.cpp \
 		Parser.cpp \
 		PmergeMe.cpp \
-		ImyContainer.cpp
+		AmyContainer.cpp
 
 NAME :=	PmergeMe
 

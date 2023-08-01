@@ -6,17 +6,17 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:22:50 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 10:24:51 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 13:01:45 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Vec.hpp"
 
-Vec::Vec(const Vec& obj) : std::vector<int>(obj), ImyContainer(obj) {
+Vec::Vec(const Vec& obj) : std::vector<int>(obj), AmyContainer(obj) {
 	VERBOSE(VEC_CPY_CTOR);
 }
 
-Vec::Vec(const int& ac, const char**& av) : std::vector<int>(), ImyContainer(ac, av) {
+Vec::Vec(const int& ac, const char**& av) : std::vector<int>(), AmyContainer(ac, av) {
 	VERBOSE(VEC_CTOR);
 }
 
@@ -28,14 +28,13 @@ Vec& Vec::operator=(const Vec& obj) {
 	VERBOSE(VEC_CPY_ASGMT_OP_CALL);
 	if (this != &obj) {
 		this->std::vector<int>::operator=(obj);
-		this->ImyContainer::operator=(obj);
+		this->AmyContainer::operator=(obj);
 	}
 	return (*this);
 }
 
-void Vec::FJmergeInsertionsort() {
-	Parser::_ParseVec(*this, this->getAc(), this->getAv());
-	
+void Vec::FJmergeInsertionsort(const int& ac, const char**& av) {
+	Parser::_ParseVec(*this, ac, av);
 }
 
 std::ostream& operator<<(std::ostream& os, const Vec& obj) {

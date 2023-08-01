@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:28 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 15:59:08 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 14:05:08 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static inline std::string _judgeDataPath()
 	return "./test_file/data.csv";
 }
 
+// 윤년?
 int main(int argc, char **argv)
 {
 	_printBitcoinExchange();

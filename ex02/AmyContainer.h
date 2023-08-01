@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ImyContainer.h                                     :+:      :+:    :+:   */
+/*   AmyContainer.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:25:32 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 23:05:20 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/01 12:40:49 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMYCONTAINER_H
-#define IMYCONTAINER_H
+#ifndef AMYCONTAINER_H
+#define AMYCONTAINER_H
 
 #include <iostream>
 #include "color.h"

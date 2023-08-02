@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/02 11:06:34 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/02 12:54:26 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ int main(const int ac, const char** av) {
 		PmergeMe pm(ac, av);
 
 		pm.listSort(ac, av);
-		if (pm.alreadySorted(ac, av))
-			throw Error::error(ALREADY_SORTED, __func__, __FILE__);
+		pm.alreadySorted(ac, av);
 		pm.vecSort(ac, av);
 		pm.deqSort(ac, av);
 		pm.confirmSort();

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:36 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/02 10:59:45 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/02 12:54:01 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& obj) {
 	return (*this);
 }
 
-bool PmergeMe::alreadySorted(const int& ac, const char**& av) {
+void PmergeMe::alreadySorted(const int& ac, const char**& av) {
 	int i = 1;
 	for (std::list<int>::const_iterator cit = _list.begin(); i < ac && cit != _list.end(); ++i, ++cit) {
 		if (std::atoi(av[i]) != *cit)
-			return false;
+			return ;
 	}
-	return true;
+	throw Error::error(ALREADY_SORTED, __func__, __FILE__);
 }
 
 void PmergeMe::vecSort(const int& ac, const char**& av) {

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:38 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/02 10:51:21 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/02 12:54:09 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class PmergeMe {
 	void vecSort(const int& ac, const char**& av);
 	void deqSort(const int& ac, const char**& av);
 	void listSort(const int& ac, const char**& av);
-	bool alreadySorted(const int&ac, const char**&av);
+	void alreadySorted(const int&ac, const char**&av);
 	void confirmSort(void) const;
 	const Vec& getVec(void) const;
 	const Deq& getDeq(void) const;

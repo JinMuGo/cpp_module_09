@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 17:30:59 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/02 11:06:34 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@ static inline void _printSortArgv(const std::list<int>& list) {
 
 int main(const int ac, const char** av) {
 	_printPmergeMe();
+
 	try {
+		if (ac == 1)
+			throw Error::error(AT_LEAST_ARGS, __func__, __FILE__);
+		Parser::_checkAv(ac, av);
 		PmergeMe pm(ac, av);
 
-		pm.checkAv(ac, av);
+		pm.listSort(ac, av);
+		if (pm.alreadySorted(ac, av))
+			throw Error::error(ALREADY_SORTED, __func__, __FILE__);
 		pm.vecSort(ac, av);
 		pm.deqSort(ac, av);
-		pm.listSort(ac, av);
 		pm.confirmSort();
 		_printUnSortArgv(ac, av);
 		_printSortArgv(pm.getList());

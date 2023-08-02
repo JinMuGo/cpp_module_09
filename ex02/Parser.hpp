@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:01 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 17:14:13 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/02 10:43:04 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class Parser {
 	Parser();
 
    public:
+	static void _checkAv(const int& ac, const char**& av);
 	static bool _containsNone(const std::string& str, const std::string& chars);
 	static bool _containsAny(const std::string& str, const std::string& chars);
 	static bool _containsNone(const std::string& str, const char& c);

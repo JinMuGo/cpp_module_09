@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:22:50 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 13:01:45 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/02 11:04:38 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ void Vec::FJmergeInsertionsort(const int& ac, const char**& av) {
 
 std::ostream& operator<<(std::ostream& os, const Vec& obj) {
 	return os << "Time to process a range of " << obj.getAc() - 1
-			  << " elements with std::vector : " << obj.getElapsedTime() << "ms" << std::endl;
+			  << " elements with " << std::left << std::setw(11) << "std::vector" << " : " << obj.getElapsedTime() << "ms";
 }

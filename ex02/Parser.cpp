@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 17:14:19 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/02 11:08:13 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ bool Parser::_containsNone(const std::string& str, const char& c) {
 		return true;
 	return false;
 }
+
 bool Parser::_containsAny(const std::string& str, const char& c) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
 	if (str.find(c) != std::string::npos)
@@ -68,44 +69,33 @@ bool Parser::_containsAny(const std::string& str, const char& c) {
 	return false;
 }
 
-void Parser::_ParseVec(std::vector<int>& vec, const int& ac, const char**& av) {
+void Parser::_checkAv(const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
 	for (int i = 1; i < ac; ++i) {
 		for (int j = 0; av[i][j]; ++j) {
 			if (_containsAny(Parser::kFull, av[i][j]) == false)
 				throw Error::error(INVALID_ARGS, __func__, __FILE__);
+			// overflow check? 
 		}
-		const int val = std::atoi(av[i]);
-		if (val == 0)
+		if (std::atoi(av[i]) == 0)
 			throw Error::error(INVALID_ARGS, __func__, __FILE__);
-		vec.push_back(val);
 	}
+}
+
+void Parser::_ParseVec(std::vector<int>& vec, const int& ac, const char**& av) {
+	VERBOSE(PRS_MEMBER_FUNC_CALL);
+	for (int i = 1; i < ac; ++i)
+		vec.push_back(std::atoi(av[i]));
 }
 
 void Parser::_ParseDeq(std::deque<int>& deq, const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
-	for (int i = 1; i < ac; ++i) {
-		for (int j = 0; av[i][j]; ++j) {
-			if (_containsAny(Parser::kFull, av[i][j]) == false)
-				throw Error::error(INVALID_ARGS, __func__, __FILE__);
-		}
-		const int val = std::atoi(av[i]);
-		if (val == 0)
-			throw Error::error(INVALID_ARGS, __func__, __FILE__);
-		deq.push_back(val);
-	}
+	for (int i = 1; i < ac; ++i)
+		deq.push_back(std::atoi(av[i]));
 }
 
 void Parser::_ParseList(std::list<int>& list, const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
-	for (int i = 1; i < ac; ++i) {
-		for (int j = 0; av[i][j]; ++j) {
-			if (_containsAny(Parser::kFull, av[i][j]) == false)
-				throw Error::error(INVALID_ARGS, __func__, __FILE__);
-		}
-		const int val = std::atoi(av[i]);
-		if (val == 0)
-			throw Error::error(INVALID_ARGS, __func__, __FILE__);
-		list.push_back(val);
-	}
+	for (int i = 1; i < ac; ++i)
+		list.push_back(std::atoi(av[i]));
 }

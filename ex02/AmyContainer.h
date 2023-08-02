@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:25:32 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 12:40:49 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/02 11:02:18 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define AMYCONTAINER_H
 
 #include <iostream>
+#include <iomanip>
 #include "color.h"
 #include "verbose.h"
 

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:12:11 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 10:02:12 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/02 10:57:52 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@
 #define ERR_MEMBER_FUNC_CALL "- Error member function called"
 
 #define INVALID_ARGS "Invalid arguments"
+#define AT_LEAST_ARGS "you need to at least one arguments in this program"
+#define ALREADY_SORTED "this arguments sequence is already sorted"
 
 #endif

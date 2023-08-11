@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:36 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/02 12:54:01 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 16:11:43 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void PmergeMe::listSort(const int& ac, const char**& av) {
 }
 
 void PmergeMe::confirmSort(void) const {
-	// 두개의 container의 값이 같은지 확인. 같다면 before:, after출력
+	// 세개의 container(list, vector, deque)의 값이 같은지 확인. 같다면 before:, after출력
 	// 다르다면 error throw
 }
 

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:05:23 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:21:29 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static inline void _printPmergeMe(void) {
 }
 
 static inline void _printUnSortArgv(const int& ac, const char**& av) {
-	std::cout << std::left << std::setw(10) << "Before: ";
+	std::cout << std::left << std::setw(10) << RED "Before: " RESET;
 	for (int i = 1; i < ac; ++i) {
 		std::cout << av[i] << " ";
 	}
@@ -33,7 +33,7 @@ static inline void _printUnSortArgv(const int& ac, const char**& av) {
 }
 
 static inline void _printSortArgv(const std::list<int>& list) {
-	std::cout << std::left << std::setw(10) << "After: ";
+	std::cout << std::left << std::setw(10) << GREEN "After: " RESET;
 	for (std::list<int>::const_iterator cit = list.begin(); cit != list.end(); ++cit)
 		std::cout << *cit << " ";
 	std::cout << std::endl;

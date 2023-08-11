@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:21 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 17:19:49 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:27:22 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <ctime>
+#include <sys/time.h>
 #include "Error.hpp"
 #include "Deq.hpp"
 #include "Vec.hpp"

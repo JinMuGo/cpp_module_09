@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:38 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/02 12:54:09 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:56:06 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ class PmergeMe {
 	const Vec& getVec(void) const;
 	const Deq& getDeq(void) const;
 	const List& getList(void) const;
+
+	static std::clock_t getMsTime(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:07:00 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 16:57:22 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:16:28 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ Date::Date(const std::string& format) : _str(format) {
 	tm.tm_mday = this->_day;
 	const std::tm tmp = tm;
 	if (std::mktime(&tm) == -1 || tm.tm_mday != tmp.tm_mday || dateStream.eof() == false || this->isValidDate(dash1, dash2) == false) {
-		const std::string prompt = INVALID_DATE_FORMAT + format;
+		const std::string prompt = INVALID_DATE_FORMAT + format + "\"";
 		throw Error::error(prompt.c_str(), __func__, __FILE__, __LINE__);
 	}
 }
+
 Date::~Date() {
 	VERBOSE(DATE_DTOR);
 }
+
 Date& Date::operator=(const Date& obj) {
 	VERBOSE(DATE_CPY_ASGMT_OP_CALL);
 	if (this != &obj) {

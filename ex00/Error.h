@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:12:11 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 16:34:15 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:15:56 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 #define INVALID_DATA_FORMAT "Invalid data format"
 #define INVALID_DATA_LINE_FORMAT "Invalid data line format"
 
-#define INVALID_DATE_FORMAT "Invalid Date format: "
+#define INVALID_DATE_FORMAT "Invalid Date format: \""
 
 #define INVALID_INPUT_FORMAT "Invalid Input format"
 #define INVALID_INPUT_LINE_FORMAT "Invalid Input line format"

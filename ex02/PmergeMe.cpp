@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:36 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 16:11:43 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:05:23 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void PmergeMe::alreadySorted(const int& ac, const char**& av) {
 		if (std::atoi(av[i]) != *cit)
 			return ;
 	}
-	throw Error::error(ALREADY_SORTED, __func__, __FILE__);
+	throw Error::error(ALREADY_SORTED, __func__, __FILE__, __LINE__);
 }
 
 void PmergeMe::vecSort(const int& ac, const char**& av) {

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:31 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 17:29:00 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 16:37:08 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ class BitcoinExchange {
 	void exchange(const std::string& path);
 	DataBase getDataBase(void) const;
 
-	static Error error(const char* msg, const char* func, const char* file);
 	static void checkInputLine(const char* endptr, const double& val);
 
    private:

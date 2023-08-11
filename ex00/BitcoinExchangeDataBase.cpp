@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:51:25 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 15:52:16 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 16:56:26 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,19 @@ const std::map<Date, double>* BitcoinExchange::DataBase::getData(void) const {
 
 void BitcoinExchange::DataBase::checkCsvSuf(const std::string& arg) {
 	if (arg.substr(arg.length() - 4) != ".csv")
-		throw BitcoinExchange::error(DATA_SUR_ERR, __func__, __FILE__);
+		throw Error::error(DATA_SUR_ERR, __func__, __FILE__, __LINE__);
 }
 
 void BitcoinExchange::DataBase::parseData(const std::string& line, std::map<Date, double>* dataBase) {
 	const std::size_t pivot = line.find(',');
 	if (pivot != line.rfind(','))
-		throw BitcoinExchange::error(INVALID_DATA_LINE_FORMAT, __func__, __FILE__);
+		throw Error::error(INVALID_DATA_LINE_FORMAT, __func__, __FILE__, __LINE__);
 	const std::string first = line.substr(0, pivot);
 	const std::string second = line.substr(pivot + 1);
 	char* endptr;
 	const double rate = strtod(second.c_str(), &endptr);
 	if (*endptr)
-		throw BitcoinExchange::error(INVALID_DATA_LINE_FORMAT, __func__, __FILE__);
+		throw Error::error(INVALID_DATA_LINE_FORMAT, __func__, __FILE__, __LINE__);
 	dataBase->insert(std::make_pair(Date(first), rate));
 }
 
@@ -67,11 +67,11 @@ std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::strin
 	std::ifstream dataFile(arg.c_str(), std::ifstream::in | std::ifstream::binary);
 
 	if (dataFile.fail())
-		throw BitcoinExchange::error(FILE_OPEN_ERR, __func__, __FILE__);
+		throw Error::error(FILE_OPEN_ERR, __func__, __FILE__, __LINE__);
 	std::string format;
 	std::getline(dataFile, format);
 	if (format != this->kFormat)
-		throw BitcoinExchange::error(INVALID_DATA_FORMAT, __func__, __FILE__);
+		throw Error::error(INVALID_DATA_FORMAT, __func__, __FILE__, __LINE__);
 	std::map<Date, double>* dataBase = new std::map<Date, double>;
 	for (std::string line; std::getline(dataFile, line);) {
 		parseData(line, dataBase);

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:07:00 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 16:07:05 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 16:57:22 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ Date::Date(const std::string& format) : _str(format) {
 	tm.tm_mon = this->_month - 1;
 	tm.tm_mday = this->_day;
 	const std::tm tmp = tm;
-	std::time_t t = std::mktime(&tm);
-	if (tm.tm_mday != tmp.tm_mday || dateStream.eof() == false || this->isValidDate(dash1, dash2) == false) {
+	if (std::mktime(&tm) == -1 || tm.tm_mday != tmp.tm_mday || dateStream.eof() == false || this->isValidDate(dash1, dash2) == false) {
 		const std::string prompt = INVALID_DATE_FORMAT + format;
-		throw error(prompt.c_str(), __func__, __FILE__);
+		throw Error::error(prompt.c_str(), __func__, __FILE__, __LINE__);
 	}
 }
 Date::~Date() {
@@ -47,10 +46,6 @@ Date& Date::operator=(const Date& obj) {
 		this->_day = obj.getDay();
 	}
 	return *this;
-}
-
-Error Date::error(const char* msg, const char* func, const char* file) {
-	throw Error(msg, func, file);
 }
 
 bool Date::isValidDate(const char& dash1, const char& dash2) {

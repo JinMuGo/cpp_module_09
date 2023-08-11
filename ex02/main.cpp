@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/02 12:54:26 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:05:23 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(const int ac, const char** av) {
 
 	try {
 		if (ac == 1)
-			throw Error::error(AT_LEAST_ARGS, __func__, __FILE__);
+			throw Error::error(AT_LEAST_ARGS, __func__, __FILE__, __LINE__);
 		Parser::_checkAv(ac, av);
 		PmergeMe pm(ac, av);
 

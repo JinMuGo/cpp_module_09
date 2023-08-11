@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:12:11 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/02 10:57:52 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:04:40 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ERROR_H
 
 #include <iostream>
+#include <sstream>
 #include "color.h"
 #include "verbose.h"
 

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:11:41 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 17:11:31 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:04:49 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ class Error : public std::exception {
 
    public:
 	Error(const Error& obj);
-	Error(const char* prompt, const char* func, const char* file);
+	Error(const char* prompt, const char* func, const char* file, const int line);
 	virtual ~Error() throw();
 	Error& operator=(const Error& obj);
-	virtual const char* what() const throw();
-	static const Error error(const char* msg, const char* func, const char* file);
+	static std::string intToString(const int& num);
+	const char* what() const throw();
+	static const Error error(const char* msg, const char* func, const char* file, const int line);
 };
 
 #endif

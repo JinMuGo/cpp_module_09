@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 18:41:01 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/29 19:52:08 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:02:10 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ class RPN {
 	static bool containsNone(const std::string& str, const char& c);
 	static bool containsAny(const std::string& str, const char& c);
 	static Args::t_args judgeArgType(const char& c);
-	static const Error error(const char* msg, const char* func, const char* file);
 
 	const int& popStack(void);
 	void processOper(const char& oper);

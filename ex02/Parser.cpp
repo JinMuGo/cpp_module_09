@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 16:20:18 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:05:23 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ void Parser::_checkAv(const int& ac, const char**& av) {
 	for (int i = 1; i < ac; ++i) {
 		for (int j = 0; av[i][j]; ++j) {
 			if (_containsAny(Parser::kFull, av[i][j]) == false)
-				throw Error::error(INVALID_ARGS, __func__, __FILE__);
+				throw Error::error(INVALID_ARGS, __func__, __FILE__, __LINE__);
 		}
 		const long int check = std::strtol(av[i], NULL, 10);
 		if (std::strlen(av[i]) > 10 || check <= 0 || std::numeric_limits<int>::max() < check)
-			throw Error::error(INVALID_ARGS, __func__, __FILE__);
+			throw Error::error(INVALID_ARGS, __func__, __FILE__, __LINE__);
 	}
 }
 

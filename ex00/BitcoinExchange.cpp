@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:48 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 18:34:57 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 16:56:26 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,13 @@ BitcoinExchange::BitcoinExchange(const std::string& arg) : _database(DataBase(ar
 	VERBOSE(BTC_CTOR);
 }
 
-Error BitcoinExchange::error(const char* msg, const char* func, const char* file) {
-	throw Error(msg, func, file);
-}
-
 void BitcoinExchange::checkInputLine(const char* endptr, const double& val) {
 	if (*endptr)
-		throw BitcoinExchange::error(INVALID_INPUT_LINE_FORMAT, __func__, __FILE__);
+		throw Error::error(INVALID_INPUT_LINE_FORMAT, __func__, __FILE__, __LINE__);
 	if (val <= 0)
-		throw BitcoinExchange::error(NOT_POSITIVE, __func__, __FILE__);
+		throw Error::error(NOT_POSITIVE, __func__, __FILE__, __LINE__);
 	if (val >= 1000)
-		throw BitcoinExchange::error(TOO_LARGE, __func__, __FILE__);
+		throw Error::error(TOO_LARGE, __func__, __FILE__, __LINE__);
 }
 
 void BitcoinExchange::exchange(const std::string& path) {
@@ -61,10 +57,10 @@ void BitcoinExchange::exchange(const std::string& path) {
 	std::string format;
 
 	if (inputFile.fail())
-		throw BitcoinExchange::error(FILE_OPEN_ERR, __func__, __FILE__);
+		throw Error::error(FILE_OPEN_ERR, __func__, __FILE__, __LINE__);
 	std::getline(inputFile, format);
 	if (format != this->kInputFormat)
-		throw BitcoinExchange::error(INVALID_INPUT_FORMAT, __func__, __FILE__);
+		throw Error::error(INVALID_INPUT_FORMAT, __func__, __FILE__, __LINE__);
 	for (std::string line; std::getline(inputFile, line);) {
 		const std::size_t pivot = line.find('|');
 		const std::string first = line.substr(0, pivot - 1);

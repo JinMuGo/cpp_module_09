@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 18:39:42 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/29 19:55:46 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:09:12 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char** av) {
 	_printRPN();
 	try {
 		if (ac != 2)
-			throw RPN::error(ARG_NUM_ERR, __func__, __FILE__);
+			throw Error::error(ARG_NUM_ERR, __func__, __FILE__, __LINE__);
 		RPN rpn(av[1]);
 		std::cout << rpn.process() << std::endl;
 	} catch (const std::exception& e) {

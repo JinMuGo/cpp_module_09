@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 18:40:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 17:05:12 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:03:53 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ RPN::RPN() : _arg(NULL) {
 	VERBOSE(RPN_DFLT_CTOR);
 }
 
-RPN::RPN(const RPN& obj): _stack(obj._stack), _arg(obj._arg) {
+RPN::RPN(const RPN& obj) : _stack(obj._stack), _arg(obj._arg) {
 	VERBOSE(RPN_CPY_CTOR);
-
 }
 
 RPN::RPN(const std::string& arg) : _arg(arg) {
@@ -35,10 +34,6 @@ RPN& RPN::operator=(const RPN& obj) {
 		this->_stack = obj._stack;
 	}
 	return (*this);
-}
-
-const Error RPN::error(const char* msg, const char* func, const char* file) {
-	return Error(msg, func, file);
 }
 
 bool RPN::containsNone(const std::string& str, const std::string& chars) {
@@ -80,7 +75,7 @@ Args::t_args RPN::judgeArgType(const char& c) {
 
 const int& RPN::popStack(void) {
 	if (_stack.empty())
-		throw error(STACK_EMPTY, __func__, __FILE__);
+		throw Error::error(STACK_EMPTY, __func__, __FILE__, __LINE__);
 	const int& elem = _stack.top();
 	_stack.pop();
 	return elem;
@@ -102,7 +97,7 @@ void RPN::processOper(const char& oper) {
 			break;
 		case '/':
 			if (second == 0)
-				throw error(ZERO_DIVIDE, __func__, __FILE__);
+				throw Error::error(ZERO_DIVIDE, __func__, __FILE__, __LINE__);
 			_stack.push(first / second);
 			break;
 		default:
@@ -112,7 +107,7 @@ void RPN::processOper(const char& oper) {
 
 int RPN::process(void) {
 	if (containsNone(this->_arg, Args::full) == false)
-		throw error(INVALID_ARGS, __func__, __FILE__);
+		throw Error::error(INVALID_ARGS, __func__, __FILE__, __LINE__);
 	for (std::string::const_iterator cit = _arg.begin(); cit != _arg.end(); ++cit) {
 		switch (judgeArgType(*cit)) {
 			case Args::NUM:
@@ -127,6 +122,6 @@ int RPN::process(void) {
 	}
 	const int res = popStack();
 	if (_stack.empty() == false)
-		throw error(INVALID_ARGS, __func__, __FILE__);
+		throw Error::error(INVALID_ARGS, __func__, __FILE__, __LINE__);
 	return res;
 }

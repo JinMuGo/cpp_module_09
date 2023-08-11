@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:28 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 14:05:08 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 16:56:26 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static inline std::string _judgeDataPath()
 	const char *getCwd = getcwd(NULL, 0);
 
 	if (getCwd == NULL)
-		BitcoinExchange::error(std::strerror(errno), __func__, __FILE__);
+		Error::error(std::strerror(errno), __func__, __FILE__, __LINE__);
 	const std::string curPath = getCwd;
 	delete getCwd;
 
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 	_printBitcoinExchange();
 	try {
 		if (argc != 2)
-			BitcoinExchange::error(ARG_NUM_ERR, __func__, __FILE__);
+			Error::error(ARG_NUM_ERR, __func__, __FILE__, __LINE__);
 		BitcoinExchange btc(_judgeDataPath());
 		btc.exchange(argv[1]);
 	}

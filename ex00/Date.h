@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:03:38 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/30 18:24:45 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 15:38:11 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define DATE_H
 
 #include <sstream>
+#include <ctime>
 #include "color.h"
 #include "verbose.h"
 

@@ -7,8 +7,7 @@ repos:
         args:
         - -c
         - |
-            docker build --tag=cpp-compile-check --file=Dockerfile .
-            docker run --rm --mount type=bind,source="$(pwd)",target=/app cpp-compile-check /bin/sh -c "cd /app && make && find . -type f -perm +111 -exec {} \; && make fclean"
+            docker run -d --rm -v "$(pwd):/app" cpp-version-check 
         language: system
         pass_filenames: false
         verbose: true

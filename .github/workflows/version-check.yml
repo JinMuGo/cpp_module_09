@@ -13,8 +13,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and test
+      - name: C++ version check
         run: |
           git submodule update --init
-          docker build -t my-image .
-          docker run my-image
+          docker build -t cpp-version-check .
+          docker run cpp-version-check 

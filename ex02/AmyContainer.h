@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:25:32 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/02 11:02:18 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 16:57:15 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <ctime>
 #include "color.h"
 #include "verbose.h"
 

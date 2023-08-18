@@ -13,9 +13,9 @@
 #ifndef AMYCONTAINER_H
 #define AMYCONTAINER_H
 
-#include <iostream>
-#include <iomanip>
 #include <ctime>
+#include <iomanip>
+#include <iostream>
 #include "color.h"
 #include "verbose.h"
 

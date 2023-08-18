@@ -13,13 +13,13 @@
 #ifndef PMERGEME_H
 #define PMERGEME_H
 
-#include <iostream>
-#include <ctime>
 #include <sys/time.h>
-#include "Error.hpp"
+#include <ctime>
+#include <iostream>
 #include "Deq.hpp"
-#include "Vec.hpp"
+#include "Error.hpp"
 #include "List.hpp"
+#include "Vec.hpp"
 
 #include "color.h"
 #include "verbose.h"

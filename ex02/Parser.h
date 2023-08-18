@@ -6,20 +6,20 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:59:59 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/18 17:01:16 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:14:53 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 #define PARSER_H
 
-#include <iostream>
-#include <vector>
-#include <deque>
-#include <list>
-#include <cstring>
 #include <cstdlib>
+#include <cstring>
+#include <deque>
+#include <iostream>
 #include <limits>
+#include <list>
+#include <vector>
 
 #include "Error.hpp"
 #include "color.h"

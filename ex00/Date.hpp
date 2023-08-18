@@ -23,13 +23,14 @@ class Date {
 	int _day;
 
 	Date();
+
    public:
 	Date(const std::string& format);
 	Date(const Date& obj);
 	~Date();
 	Date& operator=(const Date& obj);
 
-	bool isValidDate(const char &dash1, const char &dash2);
+	bool isValidDate(const char& dash1, const char& dash2);
 	bool operator<(const Date& obj) const;
 	bool operator>(const Date& obj) const;
 	bool operator<=(const Date& obj) const;
@@ -42,6 +43,6 @@ class Date {
 	int getDay() const;
 };
 
-std::ostream& operator<<(std::ostream &os, const Date& obj);
+std::ostream& operator<<(std::ostream& os, const Date& obj);
 
 #endif

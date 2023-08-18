@@ -38,6 +38,7 @@ void Deq::FJmergeInsertionsort(const int& ac, const char**& av) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Deq& obj) {
-	return os << "Time to process a range of " << obj.getAc() - 1
-			  << " elements with " << std::left << std::setw(11) << "std::deque" << " : " << obj.getElapsedTime() << "ms";
+	return os << "Time to process a range of " << obj.getAc() - 1 << " elements with " << std::left << std::setw(11)
+			  << "std::deque"
+			  << " : " << obj.getElapsedTime() << "ms";
 }

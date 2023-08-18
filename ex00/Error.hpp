@@ -28,7 +28,7 @@ class Error : public std::exception {
 	Error(const char* prompt, const char* func, const char* file, const int line);
 	virtual ~Error() throw();
 	Error& operator=(const Error& obj);
-	static std::string intToString(const int &num);
+	static std::string intToString(const int& num);
 	const char* what() const throw();
 	static const Error error(const char* msg, const char* func, const char* file, const int line);
 };

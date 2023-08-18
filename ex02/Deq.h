@@ -15,8 +15,8 @@
 
 #include <deque>
 #include <iostream>
-#include "Error.hpp"
 #include "AmyContainer.hpp"
+#include "Error.hpp"
 #include "Parser.hpp"
 
 #include "color.h"

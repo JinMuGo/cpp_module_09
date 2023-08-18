@@ -38,6 +38,7 @@ void Vec::FJmergeInsertionsort(const int& ac, const char**& av) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Vec& obj) {
-	return os << "Time to process a range of " << obj.getAc() - 1
-			  << " elements with " << std::left << std::setw(11) << "std::vector" << " : " << obj.getElapsedTime() << "ms";
+	return os << "Time to process a range of " << obj.getAc() - 1 << " elements with " << std::left << std::setw(11)
+			  << "std::vector"
+			  << " : " << obj.getElapsedTime() << "ms";
 }

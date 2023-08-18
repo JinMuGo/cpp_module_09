@@ -13,8 +13,8 @@
 #ifndef DATE_H
 #define DATE_H
 
-#include <sstream>
 #include <ctime>
+#include <sstream>
 #include "color.h"
 #include "verbose.h"
 

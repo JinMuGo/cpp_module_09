@@ -46,7 +46,7 @@ void PmergeMe::alreadySorted(const int& ac, const char**& av) {
 }
 
 std::clock_t PmergeMe::getMsTime(void) {
-	struct timeval	tv;
+	struct timeval tv;
 
 	if (gettimeofday(&tv, NULL))
 		return (0);

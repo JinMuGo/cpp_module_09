@@ -34,7 +34,7 @@ class PmergeMe {
 	void vecSort(const int& ac, const char**& av);
 	void deqSort(const int& ac, const char**& av);
 	void listSort(const int& ac, const char**& av);
-	void alreadySorted(const int&ac, const char**&av);
+	void alreadySorted(const int& ac, const char**& av);
 	void confirmSort(void) const;
 	const Vec& getVec(void) const;
 	const Deq& getDeq(void) const;

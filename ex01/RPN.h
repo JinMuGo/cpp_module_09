@@ -13,9 +13,9 @@
 #ifndef RPN_H
 #define RPN_H
 
+#include <cstdlib>
 #include <iostream>
 #include <stack>
-#include <cstdlib>
 
 #include "Error.hpp"
 #include "color.h"

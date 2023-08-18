@@ -13,18 +13,18 @@
 #ifndef BITCOINEXCHANGE_H
 #define BITCOINEXCHANGE_H
 
-#include <iostream>
+#include <cstdlib>
+#include <cstring>
 #include <fstream>
+#include <iostream>
+#include <map>
 #include <sstream>
 #include <string>
-#include <cstring>
-#include <cstdlib>
-#include <map>
 #include "color.h"
 #include "verbose.h"
 
-#include "Error.hpp"
 #include "Date.hpp"
+#include "Error.hpp"
 
 #define BTC_DFLT_CTOR GREEN "- BitcoinExchange: Default constructor called" RESET
 #define BTC_CTOR DARK_GREEN "- BitcoinExchange: constructor called" RESET

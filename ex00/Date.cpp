@@ -30,7 +30,8 @@ Date::Date(const std::string& format) : _str(format) {
 	tm.tm_mon = this->_month - 1;
 	tm.tm_mday = this->_day;
 	const std::tm tmp = tm;
-	if (std::mktime(&tm) == -1 || tm.tm_mday != tmp.tm_mday || dateStream.eof() == false || this->isValidDate(dash1, dash2) == false) {
+	if (std::mktime(&tm) == -1 || tm.tm_mday != tmp.tm_mday || dateStream.eof() == false ||
+		this->isValidDate(dash1, dash2) == false) {
 		const std::string prompt = INVALID_DATE_FORMAT + format + "\"";
 		throw Error::error(prompt.c_str(), __func__, __FILE__, __LINE__);
 	}

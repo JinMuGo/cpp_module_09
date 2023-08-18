@@ -13,10 +13,10 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include <list>
 #include <iostream>
-#include "Error.hpp"
+#include <list>
 #include "AmyContainer.hpp"
+#include "Error.hpp"
 #include "Parser.hpp"
 
 #include "color.h"

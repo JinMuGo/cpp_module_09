@@ -20,7 +20,7 @@
 #endif
 
 #ifndef PRT_VER
-#define PRT_VER std::cout << "cpp version: " YELLOW << CHK_VER(__cplusplus)  << RESET "\n\n"
+#define PRT_VER std::cout << "cpp version: " YELLOW << CHK_VER(__cplusplus) << RESET "\n\n"
 #endif
 
 #ifndef V

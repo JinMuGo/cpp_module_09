@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:21:29 by jgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 16:39:00 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,13 @@ static inline void _printSortArgv(const std::list<int>& list) {
 	std::cout << std::endl;
 }
 
+void check(void) {
+	system("leaks PmergeMe");
+}
+
 int main(const int ac, const char** av) {
 	_printPmergeMe();
+	atexit(check);
 
 	try {
 		if (ac == 1)

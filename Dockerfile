@@ -4,4 +4,4 @@ RUN apk update && apk add make g++
 
 WORKDIR /app
 
-CMD ["sh", "-c", "make && make fclean"]
+CMD [ "sh", "-c", "make fclean && make && make fclean" ]

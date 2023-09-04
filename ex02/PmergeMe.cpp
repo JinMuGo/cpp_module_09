@@ -6,17 +6,17 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:36 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:57:33 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/03 17:45:17 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(const int& ac, const char**& av) : _ac(ac), _av(av), _vec(ac, av), _deq(ac, av), _list(ac, av) {
-	VERBOSE(PMM_CTOR);
+PmergeMe::PmergeMe(void) : _vec(), _deq(), _list() {
+	VERBOSE(PMM_DFLT_CTOR);
 }
 
-PmergeMe::PmergeMe(const PmergeMe& obj) : _ac(obj._ac), _av(obj._av), _vec(obj._vec), _deq(obj._deq), _list(obj._list) {
+PmergeMe::PmergeMe(const PmergeMe& obj) : _vec(obj._vec), _deq(obj._deq), _list(obj._list) {
 	VERBOSE(PMM_CPY_CTOR);
 	*this = obj;
 }
@@ -28,10 +28,9 @@ PmergeMe::~PmergeMe() {
 PmergeMe& PmergeMe::operator=(const PmergeMe& obj) {
 	VERBOSE(PMM_CPY_ASGMT_OP_CALL);
 	if (this != &obj) {
-		const_cast<int&>(this->_ac) = obj._ac;
-		const_cast<char**&>(this->_av) = const_cast<char**&>(obj._av);
 		this->_deq = obj._deq;
 		this->_vec = obj._vec;
+		this->_list = obj._list;
 	}
 	return (*this);
 }

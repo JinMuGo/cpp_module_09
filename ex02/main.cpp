@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/18 16:39:00 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/04 12:26:13 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,15 @@ void check(void) {
 
 int main(const int ac, const char** av) {
 	_printPmergeMe();
-	atexit(check);
+	// atexit(check);
 
 	try {
 		if (ac == 1)
 			throw Error::error(AT_LEAST_ARGS, __func__, __FILE__, __LINE__);
-		Parser::_checkAv(ac, av);
-		PmergeMe pm(ac, av);
+		if (ac >= std::numeric_limits<int>::max())
+			throw Error::error(TOO_MANY_ARGS, __func__, __FILE__, __LINE__);
+		Parser parser(ac, av);
+		PmergeMe pm;
 
 		pm.listSort(ac, av);
 		pm.alreadySorted(ac, av);
@@ -60,9 +62,9 @@ int main(const int ac, const char** av) {
 		pm.confirmSort();
 		_printUnSortArgv(ac, av);
 		_printSortArgv(pm.getList());
-		std::cout << pm.getVec() << std::endl;
-		std::cout << pm.getDeq() << std::endl;
-		std::cout << pm.getList() << std::endl;
+		std::cout << parser << pm.getVec() << std::endl;
+		std::cout << parser << pm.getDeq() << std::endl;
+		std::cout << parser << pm.getList() << std::endl;
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
 		return (EXIT_FAILURE);

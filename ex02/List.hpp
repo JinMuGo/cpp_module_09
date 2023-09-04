@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:22:00 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 17:27:19 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/03 17:41:29 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 
 class List : public std::list<int>, public AmyContainer {
    private:
-	List();
-
    public:
+	List();
 	List(const List& obj);
-	List(const int& ac, const char**& av);
 	virtual ~List();
 	List& operator=(const List& obj);
 	virtual void FJmergeInsertionsort(const int& ac, const char**& av);

@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:05:23 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/04 12:41:39 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ const std::string Parser::kOper = "-+";
 const std::string Parser::kWhiteSpace = " \t\n\v\f\r";
 const std::string Parser::kFull = Parser::kNum + Parser::kOper + Parser::kWhiteSpace;
 
-Parser::Parser() {
+Parser::Parser() : _ac(0), _av(NULL), _jacobsthal() {
 	VERBOSE(PRS_DFLT_CTOR);
 }
 
-Parser::Parser(const Parser& obj) {
+Parser::Parser(const int& ac, const char**& av) : _ac(ac), _av(av), _jacobsthal() {
+	VERBOSE(PRS_CTOR);
+	this->_checkAv(ac, av);
+	this->_jacobsthal = this->makeJacobSthalVec((ac + 1) / 2);
+}
+
+Parser::Parser(const Parser& obj) : _ac(obj._ac), _av(obj._av) {
 	VERBOSE(PRS_CPY_CTOR);
-	*this = obj;
 };
 
 Parser::~Parser() {
@@ -32,9 +37,44 @@ Parser::~Parser() {
 
 Parser& Parser::operator=(const Parser& obj) {
 	VERBOSE(PRS_CPY_ASGMT_OP_CALL);
-	if (this != &obj)
-		return (*this);
+	if (this != &obj) {
+		const_cast<int&>(this->_ac) = obj._ac;
+		const_cast<char**&>(this->_av) = const_cast<char**&>(obj._av);
+		this->_jacobsthal = obj._jacobsthal;
+	}
 	return (*this);
+}
+
+int Parser::makeJacobSthalNum(const int& n) {
+	if (n == 0 || n == 1)
+		return n;
+	return makeJacobSthalNum(n - 1) + 2 * makeJacobSthalNum(n - 2);
+}
+
+std::vector<int> Parser::makeJacobSthalVec(const int& n) {
+	if (n <= 1)
+		return this->_jacobsthal;
+	std::vector<int> rv;
+	rv.push_back(0);
+	rv.push_back(1);
+	int i = 3;
+	int tmp;
+
+	while (true) {
+		tmp = this->makeJacobSthalNum(i++);
+		if (tmp > n)
+			break;
+		rv.push_back(tmp);
+	}
+	return rv;
+}
+
+int Parser::getAc(void) const {
+	return this->_ac;
+}
+
+std::vector<int> Parser::getJacobsthal(void) const {
+	return this->_jacobsthal;
 }
 
 bool Parser::_containsNone(const std::string& str, const std::string& chars) {
@@ -82,20 +122,44 @@ void Parser::_checkAv(const int& ac, const char**& av) {
 	}
 }
 
-void Parser::_ParseVec(std::vector<int>& vec, const int& ac, const char**& av) {
+void Parser::_ParseVec(std::vector<std::pair<int, int> > vec, int& last, const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
-	for (int i = 1; i < ac; ++i)
-		vec.push_back(std::atoi(av[i]));
+	int i = 1;
+	while (i < ac - 1) {
+		const int lhs = std::atoi(av[i]);
+		const int rhs = std::atoi(av[i + 1]);
+		if (lhs > rhs)
+			vec.push_back(std::make_pair(lhs, rhs));
+		else
+			vec.push_back(std::make_pair(rhs, lhs));
+		i += 2;
+	}
+	if (i != ac)
+		last = std::atoi(av[i]);
 }
 
-void Parser::_ParseDeq(std::deque<int>& deq, const int& ac, const char**& av) {
+void Parser::_ParseDeq(std::deque<std::pair<int, int> >& deq, int& last, const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
-	for (int i = 1; i < ac; ++i)
-		deq.push_back(std::atoi(av[i]));
+	int i = 1;
+	while (i < ac - 1) {
+		const int lhs = std::atoi(av[i]);
+		const int rhs = std::atoi(av[i + 1]);
+		if (lhs > rhs)
+			deq.push_back(std::make_pair(lhs, rhs));
+		else
+			deq.push_back(std::make_pair(rhs, lhs));
+		i += 2;
+	}
+	if (i != ac)
+		last = std::atoi(av[i]);
 }
 
 void Parser::_ParseList(std::list<int>& list, const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
 	for (int i = 1; i < ac; ++i)
 		list.push_back(std::atoi(av[i]));
+}
+
+std::ostream& operator<<(std::ostream& os, const Parser& obj) {
+	return os << "Time to process a range of " << obj.getAc() - 1;
 }

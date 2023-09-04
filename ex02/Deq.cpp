@@ -6,18 +6,18 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:23:10 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:59:18 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/04 11:44:27 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Deq.hpp"
 
-Deq::Deq(const Deq& obj) : std::deque<int>(), AmyContainer(obj) {
-	VERBOSE(DEQ_CPY_CTOR);
+Deq::Deq() : std::deque<int>(), AmyContainer() {
+	VERBOSE(DEQ_DFLT_CTOR);
 }
 
-Deq::Deq(const int& ac, const char**& av) : std::deque<int>(), AmyContainer(ac, av) {
-	VERBOSE(DEQ_CTOR);
+Deq::Deq(const Deq& obj) : std::deque<int>(), AmyContainer(obj) {
+	VERBOSE(DEQ_CPY_CTOR);
 }
 
 Deq::~Deq() {
@@ -29,16 +29,17 @@ Deq& Deq::operator=(const Deq& obj) {
 	if (this != &obj) {
 		this->std::deque<int>::operator=(obj);
 		this->AmyContainer::operator=(obj);
+		this->_tmp = obj._tmp;
 	}
 	return (*this);
 }
 
 void Deq::FJmergeInsertionsort(const int& ac, const char**& av) {
-	Parser::_ParseDeq(*this, ac, av);
+	Parser::_ParseDeq(this->_tmp, this->_last, ac, av);
+	this->sortPair<deqPair, deqPairIter>(this->_tmp);
 }
 
 std::ostream& operator<<(std::ostream& os, const Deq& obj) {
-	return os << "Time to process a range of " << obj.getAc() - 1 << " elements with " << std::left << std::setw(11)
-			  << "std::deque"
+	return os << " elements with " << std::left << std::setw(11) << "std::deque"
 			  << " : " << obj.getElapsedTime() << "ms";
 }

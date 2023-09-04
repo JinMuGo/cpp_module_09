@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:38 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:56:06 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/03 17:45:03 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@
 
 class PmergeMe {
    private:
-	const int& _ac;
-	const char**& _av;
 	Vec _vec;
 	Deq _deq;
 	List _list;
 
-	PmergeMe();
-
    public:
-	PmergeMe(const int& ac, const char**& av);
+	PmergeMe();
 	PmergeMe(const PmergeMe& obj);
 	~PmergeMe();
 	PmergeMe& operator=(const PmergeMe& obj);
@@ -39,6 +35,8 @@ class PmergeMe {
 	const Vec& getVec(void) const;
 	const Deq& getDeq(void) const;
 	const List& getList(void) const;
+	int getAc(void) const;
+	const char** getAv(void) const;
 
 	static std::clock_t getMsTime(void);
 };

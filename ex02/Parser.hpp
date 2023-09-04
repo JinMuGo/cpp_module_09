@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:01 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/02 10:43:04 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/04 12:41:42 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,29 @@ class Parser {
 	static const std::string kFull;
 
 	Parser(const Parser& obj);
-	~Parser();
 	Parser& operator=(const Parser& obj);
 	Parser();
+	const int _ac;
+	const char** _av;
+	std::vector<int> _jacobsthal;
+
+	std::vector<int> makeJacobSthalVec(const int& n);
+	static int makeJacobSthalNum(const int& n);
 
    public:
+	Parser(const int& ac, const char**& av);
+	~Parser();
+	int getAc(void) const;
+	std::vector<int> getJacobsthal(void) const;
 	static void _checkAv(const int& ac, const char**& av);
 	static bool _containsNone(const std::string& str, const std::string& chars);
 	static bool _containsAny(const std::string& str, const std::string& chars);
 	static bool _containsNone(const std::string& str, const char& c);
 	static bool _containsAny(const std::string& str, const char& c);
-	static void _ParseVec(std::vector<int>& vec, const int& ac, const char**& av);
-	static void _ParseDeq(std::deque<int>& deq, const int& ac, const char**& av);
+	static void _ParseVec(std::vector<std::pair<int, int> > vec, int& last, const int& ac, const char**& av);
+	static void _ParseDeq(std::deque<std::pair<int, int> >& deq, int& last, const int& ac, const char**& av);
 	static void _ParseList(std::list<int>& list, const int& ac, const char**& av);
 };
 
+std::ostream& operator<<(std::ostream& os, const Parser& obj);
 #endif

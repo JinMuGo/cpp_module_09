@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:12:11 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:04:40 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/04 12:25:52 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@
 #define INVALID_ARGS "Invalid arguments"
 #define AT_LEAST_ARGS "you need to at least one arguments in this program"
 #define ALREADY_SORTED "this arguments sequence is already sorted"
+#define TOO_MANY_ARGS "too many arguments try lower number of args"
 
 #endif

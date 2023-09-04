@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:21:39 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 16:56:02 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/03 20:24:25 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 
 class Vec : public std::vector<int>, public AmyContainer {
    private:
-	Vec();
 	std::vector<std::pair<int, int> > _tmp;
 
+	typedef std::vector<std::pair<int, int> > vecPair;
+	typedef std::vector<std::pair<int, int> >::iterator vecPairIter;
+
    public:
-	Vec(const int& ac, const char**& av);
+	Vec();
 	Vec(const Vec& obj);
 	virtual ~Vec();
 	Vec& operator=(const Vec& obj);

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ImyContainer.cpp                                   :+:      :+:    :+:   */
+/*   AmyContainer.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:28:27 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 12:40:11 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/03 20:22:13 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AmyContainer.hpp"
 
-AmyContainer::AmyContainer(const int& ac, const char**& av) : _ac(ac), _av(av), _elapsed_time(0) {
-	VERBOSE(MYCONT_CTOR);
+AmyContainer::AmyContainer(void) : _last(0), _elapsed_time(0) {
+	VERBOSE(MYCONT_DFLT_CTOR);
 }
 
-AmyContainer::AmyContainer(const AmyContainer& obj) : _ac(obj._ac), _av(obj._av), _elapsed_time(obj._elapsed_time) {
+AmyContainer::AmyContainer(const AmyContainer& obj) : _last(0), _elapsed_time(obj.getElapsedTime()) {
 	VERBOSE(MYCONT_CPY_CTOR);
 }
 
@@ -27,19 +27,17 @@ AmyContainer::~AmyContainer() {
 AmyContainer& AmyContainer::operator=(const AmyContainer& obj) {
 	VERBOSE(MYCONT_CPY_ASGMT_OP_CALL);
 	if (this != &obj) {
-		const_cast<int&>(this->_ac) = obj.getAc();
-		const_cast<char**&>(this->_av) = const_cast<char**&>(obj.getAv());
+		this->_last = obj._last;
 		const_cast<std::clock_t&>(this->_elapsed_time) = obj.getElapsedTime();
 	}
 	return (*this);
 }
 
-int AmyContainer::getAc(void) const {
-	return this->_ac;
+int AmyContainer::getLast(void) const {
+	return this->_last;
 }
-
-const char**& AmyContainer::getAv(void) const {
-	return this->_av;
+void AmyContainer::setLast(const int last) {
+	this->_last = last;
 }
 
 std::clock_t AmyContainer::getElapsedTime(void) const {

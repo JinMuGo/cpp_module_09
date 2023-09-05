@@ -6,21 +6,16 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:21:50 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 17:19:59 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/05 16:11:50 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 #define LIST_H
 
-#include <iostream>
 #include <list>
-#include "AmyContainer.hpp"
 #include "Error.hpp"
-#include "Parser.hpp"
-
-#include "color.h"
-#include "verbose.h"
+#include "AmyContainer.hpp"
 
 #define LIST_DFLT_CTOR GREEN "-- List: Default constructor called" RESET
 #define LIST_CTOR DARK_GREEN "-- List: constructor called" RESET

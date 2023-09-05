@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:25:32 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/18 16:57:15 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/05 18:20:44 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 #include <ctime>
 #include <iomanip>
 #include <iostream>
+#include <algorithm>
 #include "color.h"
 #include "verbose.h"
+#include "Parser.hpp"
 
 #define MYCONT_DFLT_CTOR GREEN "- myContainer: Default constructor called" RESET
 #define MYCONT_CTOR DARK_GREEN "- myContainer: constructor called" RESET

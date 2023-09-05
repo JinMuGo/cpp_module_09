@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:21:50 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/03 19:38:00 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/05 16:11:28 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 #define DEQ_H
 
 #include <deque>
-#include <iostream>
-#include "AmyContainer.hpp"
 #include "Error.hpp"
-#include "Parser.hpp"
-
-#include "color.h"
-#include "verbose.h"
+#include "AmyContainer.hpp"
 
 #define DEQ_DFLT_CTOR GREEN "-- Deq: Default constructor called" RESET
 #define DEQ_CTOR DARK_GREEN "-- Deq: constructor called" RESET

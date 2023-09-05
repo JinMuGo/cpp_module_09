@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:01 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/04 12:41:42 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/05 17:23:01 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ class Parser {
 	static bool _containsAny(const std::string& str, const std::string& chars);
 	static bool _containsNone(const std::string& str, const char& c);
 	static bool _containsAny(const std::string& str, const char& c);
-	static void _ParseVec(std::vector<std::pair<int, int> > vec, int& last, const int& ac, const char**& av);
-	static void _ParseDeq(std::deque<std::pair<int, int> >& deq, int& last, const int& ac, const char**& av);
+	static void _ParseVec(std::vector<std::pair<int, int> >& vec, const int& ac, const char**& av);
+	static void _ParseDeq(std::deque<std::pair<int, int> >& deq, const int& ac, const char**& av);
 	static void _ParseList(std::list<int>& list, const int& ac, const char**& av);
 };
 

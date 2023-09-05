@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/04 12:41:39 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/05 18:00:33 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@ std::vector<int> Parser::makeJacobSthalVec(const int& n) {
 	if (n <= 1)
 		return this->_jacobsthal;
 	std::vector<int> rv;
-	rv.push_back(0);
 	rv.push_back(1);
-	int i = 3;
+	rv.push_back(3);
+	int i = 5;
 	int tmp;
 
 	while (true) {
 		tmp = this->makeJacobSthalNum(i++);
+		rv.push_back(tmp);
 		if (tmp > n)
 			break;
-		rv.push_back(tmp);
 	}
 	return rv;
 }
@@ -122,7 +122,7 @@ void Parser::_checkAv(const int& ac, const char**& av) {
 	}
 }
 
-void Parser::_ParseVec(std::vector<std::pair<int, int> > vec, int& last, const int& ac, const char**& av) {
+void Parser::_ParseVec(std::vector<std::pair<int, int> > &vec, const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
 	int i = 1;
 	while (i < ac - 1) {
@@ -135,10 +135,10 @@ void Parser::_ParseVec(std::vector<std::pair<int, int> > vec, int& last, const i
 		i += 2;
 	}
 	if (i != ac)
-		last = std::atoi(av[i]);
+		vec.push_back(std::make_pair(-1, std::atoi(av[i])));
 }
 
-void Parser::_ParseDeq(std::deque<std::pair<int, int> >& deq, int& last, const int& ac, const char**& av) {
+void Parser::_ParseDeq(std::deque<std::pair<int, int> >& deq, const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
 	int i = 1;
 	while (i < ac - 1) {
@@ -151,7 +151,7 @@ void Parser::_ParseDeq(std::deque<std::pair<int, int> >& deq, int& last, const i
 		i += 2;
 	}
 	if (i != ac)
-		last = std::atoi(av[i]);
+		deq.push_back(std::make_pair(-1, std::atoi(av[i])));
 }
 
 void Parser::_ParseList(std::list<int>& list, const int& ac, const char**& av) {

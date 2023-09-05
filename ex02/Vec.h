@@ -6,21 +6,16 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:21:32 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/01 12:40:11 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/05 16:11:31 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC_H
 #define VEC_H
 
-#include <iostream>
 #include <vector>
-#include "AmyContainer.hpp"
-#include "Parser.hpp"
-
 #include "Error.hpp"
-#include "color.h"
-#include "verbose.h"
+#include "AmyContainer.hpp"
 
 #define VEC_DFLT_CTOR GREEN "-- Vec: Default constructor called" RESET
 #define VEC_CTOR DARK_GREEN "-- Vec: constructor called" RESET

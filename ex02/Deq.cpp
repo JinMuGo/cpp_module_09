@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:23:10 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/04 11:44:27 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/05 18:26:47 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,27 @@ Deq& Deq::operator=(const Deq& obj) {
 	return (*this);
 }
 
-void Deq::FJmergeInsertionsort(const int& ac, const char**& av) {
-	Parser::_ParseDeq(this->_tmp, this->_last, ac, av);
+void Deq::FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser) {
+	Parser::_ParseDeq(this->_tmp, ac, av);
 	this->sortPair<deqPair, deqPairIter>(this->_tmp);
+	this->initMainChain(this->_tmp, *this);
+	this->mergeInsertion<deqPair, std::deque<int> >(this->_tmp, *this, parser.getJacobsthal());
+}
+
+template <typename srcCont, typename dstCont>
+void Deq::mergeInsertion(const srcCont& src, dstCont& dst, const std::vector<int>& jacobSthal) {
+	int cnt = 0;
+	for (std::vector<int>::const_iterator cit = jacobSthal.begin() + 1; cit != jacobSthal.end(); ++cit) {
+		for (int idx = *cit; idx > *(cit - 1); --idx, ++cnt) {
+			if (idx > static_cast<int>(src.size()))
+				idx = static_cast<int>(src.size());
+			const int targetVal = src[idx - 1].second;
+			const typename dstCont::iterator insertIt = std::upper_bound(
+				dst.begin(), (dst.begin() + (idx + cnt) > dst.end()) ? dst.end() : dst.begin() + (idx + cnt),
+				targetVal);
+			dst.insert(insertIt, targetVal);
+		}
+	}
 }
 
 std::ostream& operator<<(std::ostream& os, const Deq& obj) {

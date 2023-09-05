@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/04 12:26:13 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/05 18:12:55 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ static inline void _printSortArgv(const std::list<int>& list) {
 	std::cout << std::endl;
 }
 
+// static inline void _printDeq(const std::deque<int>& deq) {
+// 	std::cout << std::left << std::setw(10) << GREEN "Deque: " RESET;
+// 	for (std::deque<int>::const_iterator cit = deq.begin(); cit != deq.end(); ++cit)
+// 		std::cout << *cit << " ";
+// 	std::cout << "Size: " << deq.size() << std::endl;
+// }
+
 void check(void) {
 	system("leaks PmergeMe");
 }
@@ -55,11 +62,11 @@ int main(const int ac, const char** av) {
 		Parser parser(ac, av);
 		PmergeMe pm;
 
-		pm.listSort(ac, av);
+		pm.listSort(ac, av, parser);
 		pm.alreadySorted(ac, av);
-		pm.vecSort(ac, av);
-		pm.deqSort(ac, av);
-		pm.confirmSort();
+		pm.vecSort(ac, av, parser);
+		pm.deqSort(ac, av, parser);
+		pm.confirmSort(ac);
 		_printUnSortArgv(ac, av);
 		_printSortArgv(pm.getList());
 		std::cout << parser << pm.getVec() << std::endl;

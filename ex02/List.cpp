@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:23:10 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/03 17:56:05 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/05 16:08:31 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ List& List::operator=(const List& obj) {
 	return (*this);
 }
 
-void List::FJmergeInsertionsort(const int& ac, const char**& av) {
-	Parser::_ParseList(*this, ac, av);
+void List::FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser) {
+	parser._ParseList(*this, ac, av);
 	this->sort();
 }
 

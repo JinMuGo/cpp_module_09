@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:23:10 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/06 19:42:28 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/06 19:52:34 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void Deq::mergeInsertion(const deqPair& src, std::deque<int>& dst, const std::ve
 	int cnt = 0;
 	for (vecCIter cit = jacobSthal.begin() + 1; cit != jacobSthal.end(); ++cit) {
 		int idx = *cit > static_cast<int>(src.size()) ? static_cast<int>(src.size()) : *cit;
-		while (idx < *(cit - 1)) {
+		while (idx > *(cit - 1)) {
 			const int targetVal = src[idx - 1].second;
 			const deqIter boundIt = dst.begin() + idx + cnt > dst.end() ? dst.end() : dst.begin() + idx + cnt;
 			const deqIter insertIt = std::upper_bound(dst.begin(), boundIt,targetVal);

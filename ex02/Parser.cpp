@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/06 19:34:10 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/06 19:49:34 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Parser::Parser() : _ac(0), _av(NULL), _jacobsthal() {
 Parser::Parser(const int& ac, const char**& av) : _ac(ac), _av(av), _jacobsthal() {
 	VERBOSE(PRS_CTOR);
 	this->_checkAv(ac, av);
-	this->_jacobsthal = this->makeJacobSthalVec((ac + 1) / 2);
+	this->_jacobsthal = this->makeJacobSthalVec(ac / 2);
 }
 
 Parser::Parser(const Parser& obj) : _ac(obj._ac), _av(obj._av) {

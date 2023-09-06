@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:22:50 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/06 19:37:29 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/06 19:52:37 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void Vec::mergeInsertion(const vecPair& src, std::vector<int>& dst, const std::v
 	int cnt = 0;
 	for (vecCIter cit = jacobSthal.begin() + 1; cit != jacobSthal.end(); ++cit) {
 		int idx = *cit > static_cast<int>(src.size()) ? static_cast<int>(src.size()) : *cit;
-		while (idx < *(cit - 1)) {
+		while (idx > *(cit - 1)) {
 			const int targetVal = src[idx - 1].second;
 			const vecIter boundIt = dst.begin() + idx + cnt > dst.end() ? dst.end() : dst.begin() + idx + cnt;
 			const vecIter insertIt = std::upper_bound(dst.begin(), boundIt,targetVal);

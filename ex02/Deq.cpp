@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Deq.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:23:10 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 18:26:47 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/06 19:42:28 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,20 @@ void Deq::FJmergeInsertionsort(const int& ac, const char**& av, const Parser& pa
 	Parser::_ParseDeq(this->_tmp, ac, av);
 	this->sortPair<deqPair, deqPairIter>(this->_tmp);
 	this->initMainChain(this->_tmp, *this);
-	this->mergeInsertion<deqPair, std::deque<int> >(this->_tmp, *this, parser.getJacobsthal());
+	this->mergeInsertion(this->_tmp, *this, parser.getJacobsthal());
 }
 
-template <typename srcCont, typename dstCont>
-void Deq::mergeInsertion(const srcCont& src, dstCont& dst, const std::vector<int>& jacobSthal) {
+void Deq::mergeInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal) {
 	int cnt = 0;
-	for (std::vector<int>::const_iterator cit = jacobSthal.begin() + 1; cit != jacobSthal.end(); ++cit) {
-		for (int idx = *cit; idx > *(cit - 1); --idx, ++cnt) {
-			if (idx > static_cast<int>(src.size()))
-				idx = static_cast<int>(src.size());
+	for (vecCIter cit = jacobSthal.begin() + 1; cit != jacobSthal.end(); ++cit) {
+		int idx = *cit > static_cast<int>(src.size()) ? static_cast<int>(src.size()) : *cit;
+		while (idx < *(cit - 1)) {
 			const int targetVal = src[idx - 1].second;
-			const typename dstCont::iterator insertIt = std::upper_bound(
-				dst.begin(), (dst.begin() + (idx + cnt) > dst.end()) ? dst.end() : dst.begin() + (idx + cnt),
-				targetVal);
+			const deqIter boundIt = dst.begin() + idx + cnt > dst.end() ? dst.end() : dst.begin() + idx + cnt;
+			const deqIter insertIt = std::upper_bound(dst.begin(), boundIt,targetVal);
 			dst.insert(insertIt, targetVal);
+			--idx;
+			++cnt;
 		}
 	}
 }

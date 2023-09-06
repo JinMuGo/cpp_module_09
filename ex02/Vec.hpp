@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Vec.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:21:39 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 17:37:48 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/06 19:42:19 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,7 @@
 class Vec : public std::vector<int>, public AmyContainer {
    private:
 	std::vector<std::pair<int, int> > _tmp;
-
-	typedef std::vector<std::pair<int, int> > vecPair;
-	typedef std::vector<std::pair<int, int> >::iterator vecPairIter;
-
-	template <typename srcCont, typename dstCont>
-	void mergeInsertion(const srcCont& src, dstCont& dst, const std::vector<int>& jacobSthal);
+	void mergeInsertion(const vecPair& src, std::vector<int>& dst, const std::vector<int>& jacobSthal);
 
    public:
 	Vec();

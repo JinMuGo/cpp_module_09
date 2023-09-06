@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AmyContainer.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:25:37 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 18:08:37 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/06 19:42:00 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 class AmyContainer {
    protected:
 	std::clock_t _elapsed_time;
+
+	typedef std::deque<std::pair<int, int> > deqPair;
+	typedef std::deque<std::pair<int, int> >::iterator deqPairIter;
+	typedef std::deque<int>::iterator deqIter;
+	typedef std::deque<int>::const_iterator deqCIter;
+
+	typedef std::vector<std::pair<int, int> > vecPair;
+	typedef std::vector<std::pair<int, int> >::iterator vecPairIter;
+	typedef std::vector<int>::iterator vecIter;
+	typedef std::vector<int>::const_iterator vecCIter;
 
 	template <typename Container, typename Iter>
 	void sortPair(Container& cont) {

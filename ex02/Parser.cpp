@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 18:00:33 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/06 19:34:10 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ Parser& Parser::operator=(const Parser& obj) {
 }
 
 int Parser::makeJacobSthalNum(const int& n) {
-	if (n == 0 || n == 1)
-		return n;
+	if (n == 0)
+		return 1;
+	if (n == 1)
+		return 3;
 	return makeJacobSthalNum(n - 1) + 2 * makeJacobSthalNum(n - 2);
 }
 
@@ -57,13 +59,13 @@ std::vector<int> Parser::makeJacobSthalVec(const int& n) {
 	std::vector<int> rv;
 	rv.push_back(1);
 	rv.push_back(3);
-	int i = 5;
+	int i = 2;
 	int tmp;
 
 	while (true) {
 		tmp = this->makeJacobSthalNum(i++);
 		rv.push_back(tmp);
-		if (tmp > n)
+		if (tmp >= n)
 			break;
 	}
 	return rv;

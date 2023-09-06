@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Deq.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:22:00 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 16:41:50 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/06 19:41:47 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,7 @@
 class Deq : public std::deque<int>, public AmyContainer {
    private:
 	std::deque<std::pair<int, int> > _tmp;
-
-	typedef std::deque<std::pair<int, int> > deqPair;
-	typedef std::deque<std::pair<int, int> >::iterator deqPairIter;
-
-	template <typename srcCont, typename dstCont>
-	void mergeInsertion(const srcCont& src, dstCont& dst, const std::vector<int>& jacobSthal);
+	void mergeInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal);
 
    public:
 	Deq();

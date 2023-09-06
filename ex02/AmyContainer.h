@@ -13,13 +13,13 @@
 #ifndef AMYCONTAINER_H
 #define AMYCONTAINER_H
 
+#include <algorithm>
 #include <ctime>
 #include <iomanip>
 #include <iostream>
-#include <algorithm>
+#include "Parser.hpp"
 #include "color.h"
 #include "verbose.h"
-#include "Parser.hpp"
 
 #define MYCONT_DFLT_CTOR GREEN "- myContainer: Default constructor called" RESET
 #define MYCONT_CTOR DARK_GREEN "- myContainer: constructor called" RESET

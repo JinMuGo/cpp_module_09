@@ -48,7 +48,7 @@ void Vec::mergeInsertion(const vecPair& src, std::vector<int>& dst, const std::v
 		while (idx > *(cit - 1)) {
 			const int targetVal = src[idx - 1].second;
 			const vecIter boundIt = dst.begin() + idx + cnt > dst.end() ? dst.end() : dst.begin() + idx + cnt;
-			const vecIter insertIt = std::upper_bound(dst.begin(), boundIt,targetVal);
+			const vecIter insertIt = std::upper_bound(dst.begin(), boundIt, targetVal);
 			dst.insert(insertIt, targetVal);
 			--idx;
 			++cnt;

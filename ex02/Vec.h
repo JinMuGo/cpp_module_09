@@ -14,8 +14,8 @@
 #define VEC_H
 
 #include <vector>
-#include "Error.hpp"
 #include "AmyContainer.hpp"
+#include "Error.hpp"
 
 #define VEC_DFLT_CTOR GREEN "-- Vec: Default constructor called" RESET
 #define VEC_CTOR DARK_GREEN "-- Vec: constructor called" RESET

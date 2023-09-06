@@ -14,8 +14,8 @@
 #define DEQ_H
 
 #include <deque>
-#include "Error.hpp"
 #include "AmyContainer.hpp"
+#include "Error.hpp"
 
 #define DEQ_DFLT_CTOR GREEN "-- Deq: Default constructor called" RESET
 #define DEQ_CTOR DARK_GREEN "-- Deq: constructor called" RESET

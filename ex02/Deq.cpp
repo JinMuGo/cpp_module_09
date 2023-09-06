@@ -48,7 +48,7 @@ void Deq::mergeInsertion(const deqPair& src, std::deque<int>& dst, const std::ve
 		while (idx > *(cit - 1)) {
 			const int targetVal = src[idx - 1].second;
 			const deqIter boundIt = dst.begin() + idx + cnt > dst.end() ? dst.end() : dst.begin() + idx + cnt;
-			const deqIter insertIt = std::upper_bound(dst.begin(), boundIt,targetVal);
+			const deqIter insertIt = std::upper_bound(dst.begin(), boundIt, targetVal);
 			dst.insert(insertIt, targetVal);
 			--idx;
 			++cnt;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AmyContainer.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 22:25:37 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/06 19:42:00 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/06 22:02:52 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ class AmyContainer {
 	template <typename srcCont, typename dstCont>
 	void initMainChain(const srcCont& src, dstCont& dst) {
 		// maybe error handling
-		for (std::size_t i = 0; i < src.size(); ++i)
-		{
+		for (std::size_t i = 0; i < src.size(); ++i) {
 			if (src[i].first == -1)
 				continue;
 			dst.push_back(src[i].first);
@@ -64,8 +63,6 @@ class AmyContainer {
 	AmyContainer& operator=(const AmyContainer& obj);
 
 	std::clock_t getElapsedTime(void) const;
-	int getLast(void) const;
-	void setLast(const int last);
 	void setElapsedTime(const std::clock_t time);
 	virtual void FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser) = 0;
 };

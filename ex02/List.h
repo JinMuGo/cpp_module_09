@@ -14,8 +14,8 @@
 #define LIST_H
 
 #include <list>
-#include "Error.hpp"
 #include "AmyContainer.hpp"
+#include "Error.hpp"
 
 #define LIST_DFLT_CTOR GREEN "-- List: Default constructor called" RESET
 #define LIST_CTOR DARK_GREEN "-- List: constructor called" RESET

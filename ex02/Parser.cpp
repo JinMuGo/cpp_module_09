@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/06 19:49:34 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/09 19:47:10 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 const std::string Parser::kNum = "0123456789";
 const std::string Parser::kOper = "-+";
-const std::string Parser::kWhiteSpace = " \t\n\v\f\r";
-const std::string Parser::kFull = Parser::kNum + Parser::kOper + Parser::kWhiteSpace;
+const std::string Parser::kFull = Parser::kNum + Parser::kOper;
 
 Parser::Parser() : _ac(0), _av(NULL), _jacobsthal() {
 	VERBOSE(PRS_DFLT_CTOR);
@@ -111,17 +110,23 @@ bool Parser::_containsAny(const std::string& str, const char& c) {
 	return false;
 }
 
-void Parser::_checkAv(const int& ac, const char**& av) {
-	VERBOSE(PRS_MEMBER_FUNC_CALL);
-	for (int i = 1; i < ac; ++i) {
-		for (int j = 0; av[i][j]; ++j) {
-			if (_containsAny(Parser::kFull, av[i][j]) == false)
-				throw Error::error(INVALID_ARGS, __func__, __FILE__, __LINE__);
-		}
-		const long int check = std::strtol(av[i], NULL, 10);
-		if (std::strlen(av[i]) > 10 || check <= 0 || std::numeric_limits<int>::max() < check)
+void Parser::_isValidArg(const char *arg, char *end) {
+	const long int check = std::strtol(arg, &end, 10);
+
+	for (int i = 0; arg[i]; ++i) {
+		if (Parser::_containsAny(Parser::kFull, arg[i]) == false)
 			throw Error::error(INVALID_ARGS, __func__, __FILE__, __LINE__);
 	}
+	if (*end == '+' || *end == '-')
+		throw Error::error(INVALID_ARGS, __func__, __FILE__, __LINE__);
+	if (std::strlen(arg) > 10 || check <= 0 || std::numeric_limits<int>::max() < check)
+		throw Error::error(INVALID_RANGE, __func__, __FILE__, __LINE__);
+}
+
+void Parser::_checkAv(const int& ac, const char**& av) {
+	VERBOSE(PRS_MEMBER_FUNC_CALL);
+	for (int i = 1; i < ac; ++i)
+		Parser::_isValidArg(av[i], "");
 }
 
 void Parser::_ParseVec(std::vector<std::pair<int, int> >& vec, const int& ac, const char**& av) {

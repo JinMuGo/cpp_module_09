@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:12:11 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 17:46:25 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/09 19:22:22 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #define ERR_MEMBER_FUNC_CALL "- Error member function called"
 
 #define INVALID_ARGS "Invalid arguments"
+#define INVALID_RANGE "Invalid Range of arguments"
 #define AT_LEAST_ARGS "you need to at least one arguments in this program"
 #define ALREADY_SORTED "this arguments sequence is already sorted"
 #define TOO_MANY_ARGS "too many arguments try lower number of args"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:01 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 17:23:01 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/09 19:42:24 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@
 
 class Parser {
    private:
-	typedef enum e_args { NONE, NUM, WHITESPACE } t_args;
-
 	static const std::string kNum;
 	static const std::string kOper;
-	static const std::string kWhiteSpace;
 	static const std::string kFull;
 
 	Parser(const Parser& obj);
@@ -39,6 +36,7 @@ class Parser {
 	~Parser();
 	int getAc(void) const;
 	std::vector<int> getJacobsthal(void) const;
+	static void _isValidArg(const char *arg, char *end);
 	static void _checkAv(const int& ac, const char**& av);
 	static bool _containsNone(const std::string& str, const std::string& chars);
 	static bool _containsAny(const std::string& str, const std::string& chars);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Error.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 14:13:17 by jgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:04:32 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/09 19:20:45 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ Error::Error(const char* prompt, const char* func, const char* file, const int l
 	: _prompt(prompt),
 	  _func(func),
 	  _file(file),
-	  _full(_file + ":" + intToString(line) + ": " + RED + "error: " RESET + _prompt + " in function: " GREEN + _func +
-			RESET) {
+	  _full(_file + ":" + intToString(line) + ": " + RED + "error: " RESET + _prompt + " reported by " GREEN + _func +
+			RESET + " function ") {
 	VERBOSE(ERR_CTOR);
 }
 Error::~Error() throw() {

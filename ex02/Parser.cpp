@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/09 19:47:10 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/10 08:42:16 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,14 +110,14 @@ bool Parser::_containsAny(const std::string& str, const char& c) {
 	return false;
 }
 
-void Parser::_isValidArg(const char *arg, char *end) {
-	const long int check = std::strtol(arg, &end, 10);
+void Parser::_isValidArg(const char *arg, char *endptr) {
+	const long int check = std::strtol(arg, &endptr, 10);
 
 	for (int i = 0; arg[i]; ++i) {
 		if (Parser::_containsAny(Parser::kFull, arg[i]) == false)
 			throw Error::error(INVALID_ARGS, __func__, __FILE__, __LINE__);
 	}
-	if (*end == '+' || *end == '-')
+	if (*endptr == '+' || *endptr == '-')
 		throw Error::error(INVALID_ARGS, __func__, __FILE__, __LINE__);
 	if (std::strlen(arg) > 10 || check <= 0 || std::numeric_limits<int>::max() < check)
 		throw Error::error(INVALID_RANGE, __func__, __FILE__, __LINE__);
@@ -125,8 +125,9 @@ void Parser::_isValidArg(const char *arg, char *end) {
 
 void Parser::_checkAv(const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
+	char *endptr = NULL;
 	for (int i = 1; i < ac; ++i)
-		Parser::_isValidArg(av[i], "");
+		Parser::_isValidArg(av[i], endptr);
 }
 
 void Parser::_ParseVec(std::vector<std::pair<int, int> >& vec, const int& ac, const char**& av) {

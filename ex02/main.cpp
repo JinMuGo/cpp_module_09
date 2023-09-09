@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:20 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 18:12:55 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/10 08:40:37 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void check(void) {
 
 int main(const int ac, const char** av) {
 	_printPmergeMe();
-	// atexit(check);
+	atexit(check);
 
 	try {
 		if (ac == 1)

@@ -43,7 +43,7 @@ void Deq::FJmergeInsertionsort(const int& ac, const char**& av, const Parser& pa
 
 void Deq::mergeInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal) {
 	if (jacobSthal.size() == 0)
-		return ;
+		return;
 	int cnt = 0;
 	for (vecCIter cit = jacobSthal.begin() + 1; cit != jacobSthal.end(); ++cit) {
 		int idx = *cit > static_cast<int>(src.size()) ? static_cast<int>(src.size()) : *cit;

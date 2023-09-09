@@ -36,7 +36,7 @@ class Parser {
 	~Parser();
 	int getAc(void) const;
 	std::vector<int> getJacobsthal(void) const;
-	static void _isValidArg(const char *arg, char *endptr);
+	static void _isValidArg(const char* arg, char* endptr);
 	static void _checkAv(const int& ac, const char**& av);
 	static bool _containsNone(const std::string& str, const std::string& chars);
 	static bool _containsAny(const std::string& str, const std::string& chars);

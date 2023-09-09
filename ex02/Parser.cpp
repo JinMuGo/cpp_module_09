@@ -110,7 +110,7 @@ bool Parser::_containsAny(const std::string& str, const char& c) {
 	return false;
 }
 
-void Parser::_isValidArg(const char *arg, char *endptr) {
+void Parser::_isValidArg(const char* arg, char* endptr) {
 	const long int check = std::strtol(arg, &endptr, 10);
 
 	for (int i = 0; arg[i]; ++i) {
@@ -125,7 +125,7 @@ void Parser::_isValidArg(const char *arg, char *endptr) {
 
 void Parser::_checkAv(const int& ac, const char**& av) {
 	VERBOSE(PRS_MEMBER_FUNC_CALL);
-	char *endptr = NULL;
+	char* endptr = NULL;
 	for (int i = 1; i < ac; ++i)
 		Parser::_isValidArg(av[i], endptr);
 }

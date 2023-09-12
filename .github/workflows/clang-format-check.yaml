@@ -1,3 +1,4 @@
+# https://github.com/jidicula/clang-format-action#inputs
 name: clang-format Check
 on: [push, pull_request]
 jobs:

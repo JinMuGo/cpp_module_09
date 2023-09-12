@@ -61,8 +61,7 @@ std::vector<int> Parser::makeJacobSthalVec(const int& n) {
 
 	while (true) {
 		jacobStahalNum = this->makeJacobSthalNum(idx++);
-		if (jacobStahalNum >= n)
-		{
+		if (jacobStahalNum >= n) {
 			rv.push_back(n);
 			break;
 		} else

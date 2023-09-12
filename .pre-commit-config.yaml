@@ -12,5 +12,3 @@ repos:
         pass_filenames: false
         verbose: true
         files: \.(cpp|hpp|h)$
-
-

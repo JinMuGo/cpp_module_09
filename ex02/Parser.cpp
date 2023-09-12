@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/10 08:42:16 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/12 08:57:09 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,17 @@ std::vector<int> Parser::makeJacobSthalVec(const int& n) {
 	if (n <= 1)
 		return this->_jacobsthal;
 	std::vector<int> rv;
-	rv.push_back(1);
-	rv.push_back(3);
-	int i = 2;
-	int tmp;
+	int idx = 0;
+	int jacobStahalNum;
 
 	while (true) {
-		tmp = this->makeJacobSthalNum(i++);
-		rv.push_back(tmp);
-		if (tmp >= n)
+		jacobStahalNum = this->makeJacobSthalNum(idx++);
+		if (jacobStahalNum >= n)
+		{
+			rv.push_back(n);
 			break;
+		} else
+			rv.push_back(jacobStahalNum);
 	}
 	return rv;
 }

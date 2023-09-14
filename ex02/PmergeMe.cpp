@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:36 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 18:12:35 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/14 18:29:09 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& obj) {
 		this->_list = obj._list;
 	}
 	return (*this);
+}
+
+const Vec& PmergeMe::getVec(void) const {
+	return this->_vec;
+}
+const Deq& PmergeMe::getDeq(void) const {
+	return this->_deq;
+}
+const List& PmergeMe::getList(void) const {
+	return this->_list;
 }
 
 void PmergeMe::alreadySorted(const int& ac, const char**& av) {
@@ -84,15 +94,4 @@ void PmergeMe::confirmSort(const int& ac) const {
 			throw Error::error(INVALID_SORT, __func__, __FILE__, __LINE__);
 		}
 	}
-}
-
-const Vec& PmergeMe::getVec(void) const {
-	return this->_vec;
-}
-const Deq& PmergeMe::getDeq(void) const {
-	return this->_deq;
-}
-
-const List& PmergeMe::getList(void) const {
-	return this->_list;
 }

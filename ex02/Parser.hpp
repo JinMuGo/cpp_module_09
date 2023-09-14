@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:01 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/10 08:41:51 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/14 18:24:56 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Parser {
 	const char** _av;
 	std::vector<int> _jacobsthal;
 
-	std::vector<int> makeJacobSthalVec(const int& n);
+	static std::vector<int> makeJacobSthalVec(const int& n);
 	static int makeJacobSthalNum(const int& n);
 
    public:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 14:24:38 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 17:39:12 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/14 18:28:10 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ class PmergeMe {
 	const Vec& getVec(void) const;
 	const Deq& getDeq(void) const;
 	const List& getList(void) const;
-	int getAc(void) const;
-	const char** getAv(void) const;
 
 	static std::clock_t getMsTime(void);
 };

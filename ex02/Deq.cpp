@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Deq.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:23:10 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/11 21:22:37 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/14 18:29:43 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Deq::Deq() : std::deque<int>(), AmyContainer() {
 	VERBOSE(DEQ_DFLT_CTOR);
 }
 
-Deq::Deq(const Deq& obj) : std::deque<int>(), AmyContainer(obj) {
+Deq::Deq(const Deq& obj) : std::deque<int>(obj), AmyContainer(obj) {
 	VERBOSE(DEQ_CPY_CTOR);
 }
 

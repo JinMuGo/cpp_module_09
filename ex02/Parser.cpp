@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parser.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:00:56 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/12 08:57:09 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/14 18:25:53 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ int Parser::makeJacobSthalNum(const int& n) {
 }
 
 std::vector<int> Parser::makeJacobSthalVec(const int& n) {
-	if (n <= 1)
-		return this->_jacobsthal;
 	std::vector<int> rv;
-	int idx = 0;
+	if (n <= 1)
+		return rv;
 	int jacobStahalNum;
+	int idx = 0;
 
 	while (true) {
-		jacobStahalNum = this->makeJacobSthalNum(idx++);
+		jacobStahalNum = Parser::makeJacobSthalNum(idx++);
 		if (jacobStahalNum >= n) {
 			rv.push_back(n);
 			break;

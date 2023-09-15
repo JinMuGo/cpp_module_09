@@ -8,10 +8,10 @@
 			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/ex00/btc",
-			"args": ["./test_file/myTest.txt"],
+			"program": "${workspaceFolder}/ex02/PmergeMe",
+			"args": ["3", "2"],
 			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}/ex00",
+			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb"

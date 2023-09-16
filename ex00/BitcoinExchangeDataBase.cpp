@@ -80,7 +80,11 @@ std::map<Date, double>* BitcoinExchange::DataBase::loadDataBase(const std::strin
 }
 
 const double& BitcoinExchange::DataBase::findRate(const Date& date) const {
+	if (_data->size() == 0)
+		throw Error::error(DATABASE_EMPTY, __func__, __FILE__, __LINE__);
 	if (_data->find(date) != _data->end())
 		return _data->at(date);
+	if ( _data->begin()->first > date)
+		throw Error::error(TOO_LOW_DATE, __func__, __FILE__, __LINE__);
 	return (*(--_data->lower_bound(date))).second;
 }

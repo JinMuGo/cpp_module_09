@@ -27,16 +27,15 @@
 
 #define ARG_NUM_ERR "The number of arguments must be 2."
 #define DATA_SUR_ERR "The data file surfix must be .csv"
+#define DATABASE_EMPTY "Database empty"
 #define FILE_OPEN_ERR "File open error"
 #define INVALID_DATA_FORMAT "Invalid data format"
 #define INVALID_DATA_LINE_FORMAT "Invalid data line format"
-
 #define INVALID_DATE_FORMAT "Invalid Date format: \""
-
 #define INVALID_INPUT_FORMAT "Invalid Input format"
 #define INVALID_INPUT_LINE_FORMAT "Invalid Input line format"
-
 #define NOT_POSITIVE "not a positive number."
 #define TOO_LARGE "too large number the value is must be 0 and 1000"
+#define TOO_LOW_DATE "too low date"
 
 #endif

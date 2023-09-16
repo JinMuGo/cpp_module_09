@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
+/*   By: jgo <jgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:02:28 by jgo               #+#    #+#             */
-/*   Updated: 2023/09/05 18:14:49 by jgo              ###   ########.fr       */
+/*   Updated: 2023/09/16 15:00:38 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static inline std::string _judgeDataPath() {
 	delete getCwd;
 
 	if (curPath.find("ex00") == std::string::npos)
-		return "./ex00/test_file/data.csv";
-	return "./test_file/data.csv";
+		return "./ex00/data.csv";
+	return "./data.csv";
 }
 
 int main(int argc, char** argv) {

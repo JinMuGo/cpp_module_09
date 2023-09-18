@@ -24,6 +24,7 @@ jobs:
 
   formatting-check:
     name: Formatting Check
+    needs: cpp_version_check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

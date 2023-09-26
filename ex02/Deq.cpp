@@ -34,11 +34,11 @@ Deq& Deq::operator=(const Deq& obj) {
 	return (*this);
 }
 
-void Deq::FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser) {
-	Parser::_ParseDeq(this->_tmp, ac, av);
-	std::sort(this->_tmp.begin(), this->_tmp.end(), compareFirst);
+void Deq::FJmergeInsertionsort(const int& ac, const char**& av) {
+	Parser::_makeDeqPair(this->_tmp, ac, av);
+
 	this->initMainChain(this->_tmp, *this);
-	this->mergeInsertion(this->_tmp, *this, parser.getJacobsthal());
+	this->mergeInsertion(this->_tmp, *this, Parser::_makeJacobSthalVec(ac / 2));
 }
 
 void Deq::mergeInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal) {

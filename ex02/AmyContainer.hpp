@@ -40,10 +40,6 @@ class AmyContainer {
 		dst.insert(dst.begin(), src[0].second);	 // b1 < a1
 	}
 
-	struct compareFirst {
-		bool operator()(const std::pair<int, int>& a, const std::pair<int, int>& b) const { return a.first < b.first; }
-	} compareFirst;
-
    public:
 	AmyContainer();
 	AmyContainer(const AmyContainer& obj);
@@ -52,7 +48,7 @@ class AmyContainer {
 
 	std::clock_t getElapsedTime(void) const;
 	void setElapsedTime(const std::clock_t time);
-	virtual void FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser) = 0;
+	virtual void FJmergeInsertionsort(const int& ac, const char**& av) = 0;
 };
 
 #endif

@@ -22,7 +22,7 @@ class List : public std::list<int>, public AmyContainer {
 	List(const List& obj);
 	virtual ~List();
 	List& operator=(const List& obj);
-	virtual void FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser);
+	virtual void FJmergeInsertionsort(const int& ac, const char**& av);
 };
 
 std::ostream& operator<<(std::ostream& os, const List& obj);

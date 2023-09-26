@@ -23,13 +23,14 @@ class PmergeMe {
 
    public:
 	PmergeMe();
+	PmergeMe(const int ac, const char**& av);
 	PmergeMe(const PmergeMe& obj);
 	~PmergeMe();
 	PmergeMe& operator=(const PmergeMe& obj);
 
-	void vecSort(const int& ac, const char**& av, const Parser& parser);
-	void deqSort(const int& ac, const char**& av, const Parser& parser);
-	void listSort(const int& ac, const char**& av, const Parser& parser);
+	void vecSort(const int& ac, const char**& av);
+	void deqSort(const int& ac, const char**& av);
+	void listSort(const int& ac, const char**& av);
 	void alreadySorted(const int& ac, const char**& av);
 	void confirmSort(const int& ac) const;
 	const Vec& getVec(void) const;

@@ -33,8 +33,7 @@ List& List::operator=(const List& obj) {
 	return (*this);
 }
 
-void List::FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser) {
-	parser._ParseList(*this, ac, av);
+void List::FJmergeInsertionsort(const int& ac, const char**& av) {
 	this->sort();
 }
 

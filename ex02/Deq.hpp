@@ -25,7 +25,7 @@ class Deq : public std::deque<int>, public AmyContainer {
 	Deq(const Deq& obj);
 	Deq& operator=(const Deq& obj);
 	virtual ~Deq();
-	virtual void FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser);
+	virtual void FJmergeInsertionsort(const int& ac, const char**& av);
 };
 
 std::ostream& operator<<(std::ostream& os, const Deq& obj);

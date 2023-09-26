@@ -16,10 +16,16 @@ PmergeMe::PmergeMe(void) : _vec(), _deq(), _list() {
 	VERBOSE(PMM_DFLT_CTOR);
 }
 
+PmergeMe::PmergeMe() : _vec(), _deq(), _list() {
+	VERBOSE(PMM_DFLT_CTOR);
+}
+
 PmergeMe::PmergeMe(const PmergeMe& obj) : _vec(obj._vec), _deq(obj._deq), _list(obj._list) {
 	VERBOSE(PMM_CPY_CTOR);
 	*this = obj;
 }
+
+
 
 PmergeMe::~PmergeMe() {
 	VERBOSE(PMM_DTOR);
@@ -62,26 +68,26 @@ std::clock_t PmergeMe::getMsTime(void) {
 	return ((tv.tv_sec * 1000000) + (tv.tv_usec));
 }
 
-void PmergeMe::vecSort(const int& ac, const char**& av, const Parser& parser) {
+void PmergeMe::vecSort(const int& ac, const char**& av) {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
 	const std::clock_t start = getMsTime();
-	this->_vec.FJmergeInsertionsort(ac, av, parser);
+	this->_vec.FJmergeInsertionsort(ac, av);
 	const std::clock_t end = getMsTime();
 	this->_vec.setElapsedTime(end - start);
 }
 
-void PmergeMe::deqSort(const int& ac, const char**& av, const Parser& parser) {
+void PmergeMe::deqSort(const int& ac, const char**& av) {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
 	const std::clock_t start = getMsTime();
-	this->_deq.FJmergeInsertionsort(ac, av, parser);
+	this->_deq.FJmergeInsertionsort(ac, av);
 	const std::clock_t end = getMsTime();
 	this->_deq.setElapsedTime(end - start);
 }
 
-void PmergeMe::listSort(const int& ac, const char**& av, const Parser& parser) {
+void PmergeMe::listSort(const int& ac, const char**& av) {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
 	const std::clock_t start = getMsTime();
-	this->_list.FJmergeInsertionsort(ac, av, parser);
+	this->_list.FJmergeInsertionsort(ac, av);
 	const std::clock_t end = getMsTime();
 	this->_list.setElapsedTime(end - start);
 }

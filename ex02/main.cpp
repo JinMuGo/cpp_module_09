@@ -60,12 +60,13 @@ int main(const int ac, const char** av) {
 		if (ac >= std::numeric_limits<int>::max())
 			throw Error::error(TOO_MANY_ARGS, __func__, __FILE__, __LINE__);
 		Parser parser(ac, av);
-		PmergeMe pm;
+		PmergeMe pm(ac, av);
+		// int ㅂ여배배여을  ㄷ만만ㄷ서어어서  vec,deq, list construtor에서 생성
 
-		pm.listSort(ac, av, parser);
+		pm.listSort();
 		pm.alreadySorted(ac, av);
-		pm.vecSort(ac, av, parser);
-		pm.deqSort(ac, av, parser);
+		pm.vecSort();
+		pm.deqSort();
 		pm.confirmSort(ac);
 		_printUnSortArgv(ac, av);
 		_printSortArgv(pm.getList());

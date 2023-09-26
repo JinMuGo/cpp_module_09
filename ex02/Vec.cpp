@@ -36,7 +36,7 @@ Vec& Vec::operator=(const Vec& obj) {
 
 void Vec::FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser) {
 	Parser::_ParseVec(this->_tmp, ac, av);
-	this->sortPair<vecPair, vecPairIter>(this->_tmp);
+	std::sort(this->_tmp.begin(), this->_tmp.end(), compareFirst);
 	this->initMainChain(this->_tmp, *this);
 	this->mergeInsertion(this->_tmp, *this, parser.getJacobsthal());
 }

@@ -29,22 +29,6 @@ class AmyContainer {
 	typedef std::vector<int>::iterator vecIter;
 	typedef std::vector<int>::const_iterator vecCIter;
 
-	template <typename Container, typename Iter>
-	void sortPair(Container& cont) {
-		for (Iter it = cont.begin(); it != cont.end(); ++it) {
-			Iter idx = it;
-			if (idx->first == -1)
-				continue;
-			for (Iter jt = it + 1; jt != cont.end(); ++jt) {
-				if (jt->first == -1)
-					continue;
-				if (jt->first < idx->first)
-					idx = jt;
-			}
-			std::iter_swap(it, idx);
-		}
-	}
-
 	template <typename srcCont, typename dstCont>
 	void initMainChain(const srcCont& src, dstCont& dst) {
 		// maybe error handling
@@ -55,6 +39,10 @@ class AmyContainer {
 		}
 		dst.insert(dst.begin(), src[0].second);	 // b1 < a1
 	}
+
+	struct compareFirst {
+		bool operator()(const std::pair<int, int>& a, const std::pair<int, int>& b) const { return a.first < b.first; }
+	} compareFirst;
 
    public:
 	AmyContainer();

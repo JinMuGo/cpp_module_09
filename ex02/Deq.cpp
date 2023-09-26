@@ -36,7 +36,7 @@ Deq& Deq::operator=(const Deq& obj) {
 
 void Deq::FJmergeInsertionsort(const int& ac, const char**& av, const Parser& parser) {
 	Parser::_ParseDeq(this->_tmp, ac, av);
-	this->sortPair<deqPair, deqPairIter>(this->_tmp);
+	std::sort(this->_tmp.begin(), this->_tmp.end(), compareFirst);
 	this->initMainChain(this->_tmp, *this);
 	this->mergeInsertion(this->_tmp, *this, parser.getJacobsthal());
 }

@@ -32,7 +32,7 @@ class PmergeMe {
 	void vecSort();
 	void deqSort();
 	void listSort();
-	void alreadySorted();
+	void checkAlreadySorted();
 	void confirmSort() const;
 	const Vec& getVec(void) const;
 	const Deq& getDeq(void) const;

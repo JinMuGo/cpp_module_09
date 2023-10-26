@@ -56,7 +56,7 @@ int main(const int ac, const char** av) {
 		PmergeMe pm(ac, av);
 
 		pm.listSort();
-		pm.alreadySorted();
+		pm.checkAlreadySorted();
 		pm.vecSort();
 		pm.deqSort();
 		pm.confirmSort();

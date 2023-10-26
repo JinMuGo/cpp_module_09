@@ -45,7 +45,7 @@ const List& PmergeMe::getList(void) const {
 	return this->_list;
 }
 
-void PmergeMe::alreadySorted() {
+void PmergeMe::checkAlreadySorted() {
 	int i = 1;
 	for (std::list<int>::const_iterator cit = _list.begin(); i < _ac && cit != _list.end(); ++i, ++cit) {
 		if (std::atoi(_av[i]) != *cit)

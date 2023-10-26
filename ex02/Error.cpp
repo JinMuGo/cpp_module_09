@@ -15,10 +15,12 @@
 Error::Error() {
 	VERBOSE(ERR_DFLT_CTOR);
 }
+
 Error::Error(const Error& obj) {
 	VERBOSE(ERR_CPY_CTOR);
 	*this = obj;
 }
+
 Error::Error(const char* prompt, const char* func, const char* file, const int line)
 	: _prompt(prompt),
 	  _func(func),
@@ -27,9 +29,11 @@ Error::Error(const char* prompt, const char* func, const char* file, const int l
 			RESET + " function ") {
 	VERBOSE(ERR_CTOR);
 }
+
 Error::~Error() throw() {
 	VERBOSE(ERR_DTOR);
 }
+
 Error& Error::operator=(const Error& obj) {
 	VERBOSE(ERR_CPY_ASGMT_OP_CALL);
 	if (this != &obj) {

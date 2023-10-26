@@ -17,8 +17,11 @@
 
 class Vec : public std::vector<int>, public AmyContainer {
    private:
-	std::vector<std::pair<int, int> > _tmp;
-	void mergeInsertion(const vecPair& src, std::vector<int>& dst, const std::vector<int>& jacobSthal);
+	std::vector<std::pair<int, int> > _pairVec;
+	void binaryInsertion(const vecPair& pend, std::vector<int>& main, const std::vector<int>& jacobSthal);
+	void sortPair(const vecPairIter begin, const vecPairIter end);
+	void sortEachPair(vecPairIter begin, const vecPairIter mid, vecPairIter end);
+	void initMainChain(vecPair& src, std::vector<int>& dst);
 
    public:
 	Vec();

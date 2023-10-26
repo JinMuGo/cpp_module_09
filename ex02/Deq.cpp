@@ -34,11 +34,49 @@ Deq& Deq::operator=(const Deq& obj) {
 	return (*this);
 }
 
-void Deq::FJmergeInsertionsort(const int& ac, const char**& av) {
-	Parser::_makeDeqPair(this->_tmp, ac, av);
+void Deq::initMainChain(deqPair& src, std::deque<int>& dst) {
+	dst.push_back(src.begin()->second);
+	for (deqPairCiter it = src.begin(); it != src.end(); ++it) {
+		dst.push_back(it->first);
+		if (it->second == -1)
+			src.erase(it);
+	}
+}
 
-	this->initMainChain(this->_tmp, *this);
-	this->mergeInsertion(this->_tmp, *this, Parser::_makeJacobSthalVec(ac / 2));
+void Deq::sortEachPair(deqPairIter begin, const deqPairIter mid, deqPairIter end) {
+	deqPair left(begin, mid + 1);
+	deqPair right(mid + 1, end + 1);
+
+	deqPairIter leftIter = left.begin();
+	deqPairIter rightIter = right.begin();
+
+	while (leftIter != left.end() && rightIter != right.end()) {
+		if (leftIter->first <= rightIter->first)
+			*begin++ = *leftIter++;
+		else
+			*begin++ = *rightIter++;
+	}
+	while (leftIter != left.end())
+		*begin++ = *leftIter++;
+
+	while (rightIter != right.end())
+		*begin++ = *rightIter++;
+}
+
+void Deq::sortPair(const deqPairIter begin, const deqPairIter end) {
+	if (begin >= end)
+		return;
+	const deqPairIter mid = begin + (std::distance(begin, end) / 2);
+	this->sortPair(begin, mid);
+	this->sortPair(mid + 1, end);
+	this->sortEachPair(begin, mid, end);
+}
+
+void Deq::FJmergeInsertionsort(const int& ac, const char**& av) {
+	Parser::_makeDeqPair(this->_pairDeq, ac, av);
+	this->sortPair(this->_pairDeq.begin(), this->_pairDeq.end() - 1);
+	this->initMainChain(this->_pairDeq, *this);
+	this->binaryInsertion(this->_pairDeq, *this, Parser::_makeJacobSthalVec(ac / 2));
 }
 
 void Deq::mergeInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal) {

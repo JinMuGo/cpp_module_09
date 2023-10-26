@@ -39,13 +39,6 @@ static inline void _printSortArgv(const std::list<int>& list) {
 	std::cout << std::endl;
 }
 
-// static inline void _printDeq(const std::deque<int>& deq) {
-// 	std::cout << std::left << std::setw(10) << GREEN "Deque: " RESET;
-// 	for (std::deque<int>::const_iterator cit = deq.begin(); cit != deq.end(); ++cit)
-// 		std::cout << *cit << " ";
-// 	std::cout << "Size: " << deq.size() << std::endl;
-// }
-
 void check(void) {
 	system("leaks PmergeMe");
 }
@@ -61,7 +54,6 @@ int main(const int ac, const char** av) {
 			throw Error::error(TOO_MANY_ARGS, __func__, __FILE__, __LINE__);
 		Parser parser(ac, av);
 		PmergeMe pm(ac, av);
-		// int ㅂ여배배여을  ㄷ만만ㄷ서어어서  vec,deq, list construtor에서 생성
 
 		pm.listSort();
 		pm.alreadySorted(ac, av);

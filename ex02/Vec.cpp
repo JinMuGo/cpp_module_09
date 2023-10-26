@@ -34,12 +34,49 @@ Vec& Vec::operator=(const Vec& obj) {
 	return (*this);
 }
 
-void Vec::FJmergeInsertionsort(const int& ac, const char**& av) {
-	Parser::_makeVecPair(this->_tmp, ac, av);
+void Vec::sortEachPair(vecPairIter begin, const vecPairIter mid, vecPairIter end) {
+	vecPair left(begin, mid + 1);
+	vecPair right(mid + 1, end + 1);
 
-	
-	this->initMainChain(this->_tmp, *this);
-	this->mergeInsertion(this->_tmp, *this, Parser::_makeJacobSthalVec(ac / 2));
+	vecPairIter leftIter = left.begin();
+	vecPairIter rightIter = right.begin();
+
+	while (leftIter != left.end() && rightIter != right.end()) {
+		if (leftIter->first <= rightIter->first)
+			*begin++ = *leftIter++;
+		else
+			*begin++ = *rightIter++;
+	}
+	while (leftIter != left.end())
+		*begin++ = *leftIter++;
+
+	while (rightIter != right.end())
+		*begin++ = *rightIter++;
+}
+
+void Vec::sortPair(const vecPairIter begin, const vecPairIter end) {
+	if (begin >= end)
+		return;
+	const vecPairIter mid = begin + (std::distance(begin, end) / 2);
+	this->sortPair(begin, mid);
+	this->sortPair(mid + 1, end);
+	this->sortEachPair(begin, mid, end);
+}
+
+void Vec::initMainChain(vecPair& src, std::vector<int>& dst) {
+	dst.push_back(src.begin()->second);
+	for (vecPairCiter it = src.begin(); it != src.end(); ++it) {
+		dst.push_back(it->first);
+		if (it->second == -1)
+			src.erase(it);
+	}
+}
+
+void Vec::FJmergeInsertionsort(const int& ac, const char**& av) {
+	Parser::_makeVecPair(this->_pairVec, ac, av);
+	this->sortPair(this->_pairVec.begin(), this->_pairVec.end() - 1);
+	this->initMainChain(this->_pairVec, *this);
+	this->binaryInsertion(this->_pairVec, *this, Parser::_makeJacobSthalVec(ac / 2));
 }
 
 void Vec::mergeInsertion(const vecPair& src, std::vector<int>& dst, const std::vector<int>& jacobSthal) {

@@ -12,11 +12,7 @@
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(void) : _vec(), _deq(), _list() {
-	VERBOSE(PMM_DFLT_CTOR);
-}
-
-PmergeMe::PmergeMe() : _vec(), _deq(), _list() {
+PmergeMe::PmergeMe(const int ac, const char**& av) : _vec(), _deq(), _list(ac, av) {
 	VERBOSE(PMM_DFLT_CTOR);
 }
 

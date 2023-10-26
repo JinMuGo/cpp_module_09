@@ -137,7 +137,7 @@ void Parser::_makeVecPair(std::vector<std::pair<int, int> >& vec, const int& ac,
 		i += 2;
 	}
 	if (i != ac)
-		vec.push_back(std::make_pair(-1, std::atoi(av[i])));
+		vec.push_back(std::make_pair(std::atoi(av[i]), -1));
 }
 
 void Parser::_makeDeqPair(std::deque<std::pair<int, int> >& deq, const int& ac, const char**& av) {

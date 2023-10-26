@@ -17,8 +17,11 @@
 
 class Deq : public std::deque<int>, public AmyContainer {
    private:
-	std::deque<std::pair<int, int> > _tmp;
-	void mergeInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal);
+	std::deque<std::pair<int, int> > _pairDeq;
+	void binaryInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal);
+	void sortPair(const deqPairIter begin, const deqPairIter end);
+	void sortEachPair(deqPairIter begin, const deqPairIter mid, deqPairIter end);
+	void initMainChain(deqPair& src, std::deque<int>& dst);
 
    public:
 	Deq();

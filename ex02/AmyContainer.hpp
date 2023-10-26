@@ -39,7 +39,7 @@ class AmyContainer {
 
 	std::clock_t getElapsedTime(void) const;
 	void setElapsedTime(const std::clock_t time);
-	virtual void FJmergeInsertionsort(const int& ac, const char**& av) = 0;
+	virtual void FJmergeInsertionsort(const int ac, const char**& av) = 0;
 };
 
 #endif

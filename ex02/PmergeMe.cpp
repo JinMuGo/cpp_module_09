@@ -12,16 +12,14 @@
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(const int ac, const char**& av) : _vec(), _deq(), _list(ac, av) {
+PmergeMe::PmergeMe(const int ac, const char**& av) : _ac(ac), _av(av), _vec(), _deq(), _list(ac, av) {
 	VERBOSE(PMM_DFLT_CTOR);
 }
 
-PmergeMe::PmergeMe(const PmergeMe& obj) : _vec(obj._vec), _deq(obj._deq), _list(obj._list) {
+PmergeMe::PmergeMe(const PmergeMe& obj) : _ac(obj._ac), _av(obj._av), _vec(obj._vec), _deq(obj._deq), _list(obj._list) {
 	VERBOSE(PMM_CPY_CTOR);
 	*this = obj;
 }
-
-
 
 PmergeMe::~PmergeMe() {
 	VERBOSE(PMM_DTOR);
@@ -47,10 +45,10 @@ const List& PmergeMe::getList(void) const {
 	return this->_list;
 }
 
-void PmergeMe::alreadySorted(const int& ac, const char**& av) {
+void PmergeMe::alreadySorted() {
 	int i = 1;
-	for (std::list<int>::const_iterator cit = _list.begin(); i < ac && cit != _list.end(); ++i, ++cit) {
-		if (std::atoi(av[i]) != *cit)
+	for (std::list<int>::const_iterator cit = _list.begin(); i < _ac && cit != _list.end(); ++i, ++cit) {
+		if (std::atoi(_av[i]) != *cit)
 			return;
 	}
 	throw Error::error(ALREADY_SORTED, __func__, __FILE__, __LINE__);
@@ -64,35 +62,36 @@ std::clock_t PmergeMe::getMsTime(void) {
 	return ((tv.tv_sec * 1000000) + (tv.tv_usec));
 }
 
-void PmergeMe::vecSort(const int& ac, const char**& av) {
+void PmergeMe::vecSort() {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
 	const std::clock_t start = getMsTime();
-	this->_vec.FJmergeInsertionsort(ac, av);
+	this->_vec.FJmergeInsertionsort(_ac, _av);
 	const std::clock_t end = getMsTime();
 	this->_vec.setElapsedTime(end - start);
 }
 
-void PmergeMe::deqSort(const int& ac, const char**& av) {
+void PmergeMe::deqSort() {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
 	const std::clock_t start = getMsTime();
-	this->_deq.FJmergeInsertionsort(ac, av);
+	this->_deq.FJmergeInsertionsort(_ac, _av);
 	const std::clock_t end = getMsTime();
 	this->_deq.setElapsedTime(end - start);
 }
 
-void PmergeMe::listSort(const int& ac, const char**& av) {
+void PmergeMe::listSort() {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
 	const std::clock_t start = getMsTime();
-	this->_list.FJmergeInsertionsort(ac, av);
+	this->_list.FJmergeInsertionsort(_ac, _av);
 	const std::clock_t end = getMsTime();
 	this->_list.setElapsedTime(end - start);
 }
 
-void PmergeMe::confirmSort(const int& ac) const {
+void PmergeMe::confirmSort() const {
 	int i = 0;
-	for (std::list<int>::const_iterator cit = _list.begin(); i < ac && cit != _list.end(); ++i, ++cit) {
+	for (std::list<int>::const_iterator cit = _list.begin(); i < _ac && cit != _list.end(); ++i, ++cit) {
 		if (_deq[i] != *cit || _vec[i] != *cit) {
-			std::cout << "list: " << *cit << " deque: " << _deq[i] << " vector: " << _vec[i] << std::endl;
+			std::cout << "index: " << i << " list: " << *cit << " deque: " << _deq[i] << " vector: " << _vec[i]
+					  << std::endl;
 			throw Error::error(INVALID_SORT, __func__, __FILE__, __LINE__);
 		}
 	}

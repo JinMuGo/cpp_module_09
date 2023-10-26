@@ -29,7 +29,7 @@ Deq& Deq::operator=(const Deq& obj) {
 	if (this != &obj) {
 		this->std::deque<int>::operator=(obj);
 		this->AmyContainer::operator=(obj);
-		this->_tmp = obj._tmp;
+		this->_pairDeq = obj._pairDeq;
 	}
 	return (*this);
 }
@@ -72,14 +72,14 @@ void Deq::sortPair(const deqPairIter begin, const deqPairIter end) {
 	this->sortEachPair(begin, mid, end);
 }
 
-void Deq::FJmergeInsertionsort(const int& ac, const char**& av) {
+void Deq::FJmergeInsertionsort(const int ac, const char**& av) {
 	Parser::_makeDeqPair(this->_pairDeq, ac, av);
 	this->sortPair(this->_pairDeq.begin(), this->_pairDeq.end() - 1);
 	this->initMainChain(this->_pairDeq, *this);
 	this->binaryInsertion(this->_pairDeq, *this, Parser::_makeJacobSthalVec(ac / 2));
 }
 
-void Deq::mergeInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal) {
+void Deq::binaryInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal) {
 	if (jacobSthal.size() == 0)
 		return;
 	int cnt = 0;

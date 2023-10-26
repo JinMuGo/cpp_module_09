@@ -56,10 +56,10 @@ int main(const int ac, const char** av) {
 		PmergeMe pm(ac, av);
 
 		pm.listSort();
-		pm.alreadySorted(ac, av);
+		pm.alreadySorted();
 		pm.vecSort();
 		pm.deqSort();
-		pm.confirmSort(ac);
+		pm.confirmSort();
 		_printUnSortArgv(ac, av);
 		_printSortArgv(pm.getList());
 		std::cout << parser << pm.getVec() << std::endl;

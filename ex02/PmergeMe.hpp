@@ -17,22 +17,23 @@
 
 class PmergeMe {
    private:
+	const int _ac;
+	const char**& _av;
 	Vec _vec;
 	Deq _deq;
 	List _list;
 
    public:
-	PmergeMe();
 	PmergeMe(const int ac, const char**& av);
 	PmergeMe(const PmergeMe& obj);
 	~PmergeMe();
 	PmergeMe& operator=(const PmergeMe& obj);
 
-	void vecSort(const int& ac, const char**& av);
-	void deqSort(const int& ac, const char**& av);
-	void listSort(const int& ac, const char**& av);
-	void alreadySorted(const int& ac, const char**& av);
-	void confirmSort(const int& ac) const;
+	void vecSort();
+	void deqSort();
+	void listSort();
+	void alreadySorted();
+	void confirmSort() const;
 	const Vec& getVec(void) const;
 	const Deq& getDeq(void) const;
 	const List& getList(void) const;

@@ -12,8 +12,10 @@
 
 #include "List.hpp"
 
-List::List() : std::list<int>(), AmyContainer() {
+List::List(const int ac, const char**& av) : std::list<int>(), AmyContainer() {
 	VERBOSE(LIST_DFLT_CTOR);
+	for (int i = 1; i < ac; ++i)
+		this->push_back(std::atoi(av[i]));
 }
 
 List::List(const List& obj) : std::list<int>(), AmyContainer(obj) {
@@ -33,7 +35,9 @@ List& List::operator=(const List& obj) {
 	return (*this);
 }
 
-void List::FJmergeInsertionsort(const int& ac, const char**& av) {
+void List::FJmergeInsertionsort(const int ac, const char**& av) {
+	(void)ac;
+	(void)av;
 	this->sort();
 }
 

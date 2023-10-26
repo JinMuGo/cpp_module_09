@@ -18,11 +18,11 @@
 class List : public std::list<int>, public AmyContainer {
    private:
    public:
-	List();
+	List(const int ac, const char**& av);
 	List(const List& obj);
 	virtual ~List();
 	List& operator=(const List& obj);
-	virtual void FJmergeInsertionsort(const int& ac, const char**& av);
+	virtual void FJmergeInsertionsort(const int ac, const char**& av);
 };
 
 std::ostream& operator<<(std::ostream& os, const List& obj);

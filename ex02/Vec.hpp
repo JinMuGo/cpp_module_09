@@ -28,7 +28,7 @@ class Vec : public std::vector<int>, public AmyContainer {
 	Vec(const Vec& obj);
 	virtual ~Vec();
 	Vec& operator=(const Vec& obj);
-	virtual void FJmergeInsertionsort(const int& ac, const char**& av);
+	virtual void FJmergeInsertionsort(const int ac, const char**& av);
 };
 
 std::ostream& operator<<(std::ostream& os, const Vec& obj);

@@ -29,7 +29,7 @@ Vec& Vec::operator=(const Vec& obj) {
 	if (this != &obj) {
 		this->std::vector<int>::operator=(obj);
 		this->AmyContainer::operator=(obj);
-		this->_tmp = obj._tmp;
+		this->_pairVec = obj._pairVec;
 	}
 	return (*this);
 }
@@ -72,14 +72,14 @@ void Vec::initMainChain(vecPair& src, std::vector<int>& dst) {
 	}
 }
 
-void Vec::FJmergeInsertionsort(const int& ac, const char**& av) {
+void Vec::FJmergeInsertionsort(const int ac, const char**& av) {
 	Parser::_makeVecPair(this->_pairVec, ac, av);
 	this->sortPair(this->_pairVec.begin(), this->_pairVec.end() - 1);
 	this->initMainChain(this->_pairVec, *this);
 	this->binaryInsertion(this->_pairVec, *this, Parser::_makeJacobSthalVec(ac / 2));
 }
 
-void Vec::mergeInsertion(const vecPair& src, std::vector<int>& dst, const std::vector<int>& jacobSthal) {
+void Vec::binaryInsertion(const vecPair& src, std::vector<int>& dst, const std::vector<int>& jacobSthal) {
 	if (jacobSthal.size() == 0)
 		return;
 	int cnt = 0;

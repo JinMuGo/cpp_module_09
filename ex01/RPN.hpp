@@ -17,12 +17,12 @@
 
 namespace Args {
 
-typedef enum e_args { NONE, NUM, OPER, WHITESPACE } t_args;
+	typedef enum e_args { NONE, NUM, OPER, WHITESPACE } t_args;
 
-const std::string num = "0123456789";
-const std::string oper = "+-*/";
-const std::string whiteSpace = " \t\n\v\f\r";
-const std::string full = num + oper + whiteSpace;
+	const std::string num = "0123456789";
+	const std::string oper = "+-*/";
+	const std::string whiteSpace = " \t\n\v\f\r";
+	const std::string full = num + oper + whiteSpace;
 
 }  // namespace Args
 

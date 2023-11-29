@@ -12,7 +12,7 @@
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(const int ac, const char**& av) : _ac(ac), _av(av), _vec(), _deq(), _list(ac, av) {
+PmergeMe::PmergeMe(const int ac, const char**& av) : _ac(ac), _av(av), _vec(ac, av), _deq(ac, av), _list(ac, av) {
 	VERBOSE(PMM_DFLT_CTOR);
 }
 
@@ -65,7 +65,7 @@ std::clock_t PmergeMe::getMsTime(void) {
 void PmergeMe::vecSort() {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
 	const std::clock_t start = getMsTime();
-	this->_vec.FJmergeInsertionsort(_ac, _av);
+	this->_vec.FJmergeInsertionsort();
 	const std::clock_t end = getMsTime();
 	this->_vec.setElapsedTime(end - start);
 }
@@ -73,7 +73,7 @@ void PmergeMe::vecSort() {
 void PmergeMe::deqSort() {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
 	const std::clock_t start = getMsTime();
-	this->_deq.FJmergeInsertionsort(_ac, _av);
+	this->_deq.FJmergeInsertionsort();
 	const std::clock_t end = getMsTime();
 	this->_deq.setElapsedTime(end - start);
 }
@@ -81,7 +81,7 @@ void PmergeMe::deqSort() {
 void PmergeMe::listSort() {
 	VERBOSE(PMM_MEMBER_FUNC_CALL);
 	const std::clock_t start = getMsTime();
-	this->_list.FJmergeInsertionsort(_ac, _av);
+	this->_list.FJmergeInsertionsort();
 	const std::clock_t end = getMsTime();
 	this->_list.setElapsedTime(end - start);
 }

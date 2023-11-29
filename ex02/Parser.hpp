@@ -39,8 +39,6 @@ class Parser {
 	static bool _containsAny(const std::string& str, const std::string& chars);
 	static bool _containsNone(const std::string& str, const char& c);
 	static bool _containsAny(const std::string& str, const char& c);
-	static void _makeVecPair(std::vector<std::pair<int, int> >& vec, const int& ac, const char**& av);
-	static void _makeDeqPair(std::deque<std::pair<int, int> >& deq, const int& ac, const char**& av);
 };
 
 std::ostream& operator<<(std::ostream& os, const Parser& obj);

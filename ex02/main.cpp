@@ -39,7 +39,7 @@ static inline void _printSortArgv(const std::list<int>& list) {
 	std::cout << std::endl;
 }
 
-// void check(void) {
+// static void check(void) {
 // 	system("leaks PmergeMe");
 // }
 

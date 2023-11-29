@@ -12,8 +12,11 @@
 
 #include "Deq.hpp"
 
-Deq::Deq() : std::deque<int>(), AmyContainer() {
+Deq::Deq(const int ac, const char**& av) : std::deque<int>(ac - 1), AmyContainer() {
 	VERBOSE(DEQ_DFLT_CTOR);
+	for (int i = 1; i < ac; ++i) {
+		this->operator[](i - 1) = std::atoi(av[i]);	 // (*this)
+	}
 }
 
 Deq::Deq(const Deq& obj) : std::deque<int>(obj), AmyContainer(obj) {
@@ -29,78 +32,12 @@ Deq& Deq::operator=(const Deq& obj) {
 	if (this != &obj) {
 		this->std::deque<int>::operator=(obj);
 		this->AmyContainer::operator=(obj);
-		this->_pairDeq = obj._pairDeq;
 	}
 	return (*this);
 }
 
-void Deq::initMainChain(deqPair& src, std::deque<int>& dst) {
-	dst.push_back(src.begin()->second);
-	for (deqPairIter it = src.begin(); it != src.end(); ++it) {
-		dst.push_back(it->first);
-	}
-}
-
-void Deq::sortEachPair(deqPairIter begin, const deqPairIter mid, deqPairIter end) {
-	deqPair left(begin, mid + 1);
-	deqPair right(mid + 1, end + 1);
-
-	deqPairIter leftIter = left.begin();
-	deqPairIter rightIter = right.begin();
-
-	while (leftIter != left.end() && rightIter != right.end()) {
-		if (leftIter->first <= rightIter->first)
-			*begin++ = *leftIter++;
-		else
-			*begin++ = *rightIter++;
-	}
-	while (leftIter != left.end())
-		*begin++ = *leftIter++;
-
-	while (rightIter != right.end())
-		*begin++ = *rightIter++;
-}
-
-void Deq::sortPair(const deqPairIter begin, const deqPairIter end) {
-	if (begin >= end)
-		return;
-	const deqPairIter mid = begin + (std::distance(begin, end) / 2);
-	this->sortPair(begin, mid);
-	this->sortPair(mid + 1, end);
-	this->sortEachPair(begin, mid, end);
-}
-
-void Deq::FJmergeInsertionsort(const int ac, const char**& av) {
-	Parser::_makeDeqPair(this->_pairDeq, ac, av);
-	this->sortPair(this->_pairDeq.begin(), this->_pairDeq.end() - 1);
-	this->initMainChain(this->_pairDeq, *this);
-	this->binaryInsertion(this->_pairDeq, *this, Parser::_makeJacobSthalVec(ac / 2));
-	if (ac % 2 == 0) {
-		int targetVal = std::atoi(av[ac - 1]);
-		this->insert(std::upper_bound(this->begin(), this->end(), targetVal), targetVal);
-	}
-}
-
-void Deq::binaryInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal) {
-	if (jacobSthal.size() == 0)
-		return;
-	int size = src.size();
-	int cnt = 0;
-	for (vecCIter cit = jacobSthal.begin() + 1; cit != jacobSthal.end(); ++cit) {
-		int idx = *cit;
-		while (idx > *(cit - 1)) {
-			if (size <= idx - 1) {
-				--idx;
-				continue;
-			}
-			const int targetVal = src[idx - 1].second;
-			const deqIter boundIt = dst.begin() + idx + cnt > dst.end() ? dst.end() : dst.begin() + idx + cnt;
-			const deqIter insertIt = std::upper_bound(dst.begin(), boundIt, targetVal);
-			dst.insert(insertIt, targetVal);
-			--idx;
-			++cnt;
-		}
-	}
+void Deq::FJmergeInsertionsort() {
+	merge_insertion_sort(this->begin(), this->end(), std::less<int>());
 }
 
 std::ostream& operator<<(std::ostream& os, const Deq& obj) {

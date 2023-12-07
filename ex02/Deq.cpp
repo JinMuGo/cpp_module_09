@@ -36,7 +36,7 @@ Deq& Deq::operator=(const Deq& obj) {
 
 void Deq::initMainChain(deqPair& src, std::deque<int>& dst) {
 	dst.push_back(src.begin()->second);
-	for (deqPairCiter it = src.begin(); it != src.end(); ++it) {
+	for (deqPairIter it = src.begin(); it != src.end(); ++it) {
 		dst.push_back(it->first);
 		if (it->second == -1)
 			src.erase(it);

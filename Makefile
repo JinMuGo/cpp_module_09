@@ -29,9 +29,11 @@ all bonus:
 
 fclean clean re:
 	$(Q)$(foreach dir, $(DIRS), $(MAKE) -C $(dir) $@;)
+	$(MAKE) -C test $@
 
-test: 
+test:
 	$(MAKE) ex02
 	$(MAKE) -C test
+	./ex02_tester 1000
 
 .PHONY: all clean fclean re bonus $(DIRS) test

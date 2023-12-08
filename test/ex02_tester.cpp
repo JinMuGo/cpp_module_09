@@ -1,6 +1,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <cstdio>
+#include <cstring>
 #include <iostream>
 #include <random>
 #include <vector>
@@ -14,10 +16,11 @@ static void print_vector(std::vector<char*>& vec) {
 }
 
 void exe_child(std::vector<char*>& vec) {
-	char* const* argv = vec.data();
-	execve("../PmergeMe", argv, nullptr);
-	std::cerr << "execve error" << std::endl;
-	exit(EXIT_FAILURE);
+	char** argv = vec.data();
+	argv[vec.size()] = nullptr;
+	execve("./PmergeMe", argv, nullptr);
+	std::cerr << "execve error: " << std::strerror(errno) << std::endl;
+	exit(42);
 }
 
 static void generate_random_value(std::mt19937& gen, const int begin, const int end, const int size) {
@@ -33,7 +36,6 @@ static void generate_random_value(std::mt19937& gen, const int begin, const int 
 	}
 	print_vector(vec);
 	exe_child(vec);
-	vec.clear();
 }
 
 static void execute_test(std::mt19937& gen, const int count) {
@@ -53,7 +55,7 @@ int main(int ac, char** av) {
 	std::mt19937 gen(rd());	 // Mersenne Twister 엔진을 사용한 시드 초기화
 
 	const int count = std::atoi(av[1]);
-	for (int i = 0; i <= count; ++i) {
+	for (int i = 1; i <= count; ++i) {
 		std::cout << "\n------------------- test:  " << i + 1 << " -------------------\n" << std::endl;
 		pid_t pid = fork();
 		if (pid == -1) {

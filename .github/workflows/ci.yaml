@@ -40,3 +40,16 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - uses: wagoid/commitlint-github-action@v5
+
+    ex02-test:
+        name: Ex02 Test
+        runs-on: ubuntu-latest
+        needs: formatting-check
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v3
+
+            - name: start Test
+              run: |
+                  git submodule update --init
+                  make test

@@ -67,6 +67,10 @@
 		"utility": "cpp",
 		"vector": "cpp",
 		"filesystem": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"__verbose_abort": "cpp",
+		"charconv": "cpp",
+		"clocale": "cpp",
+		"variant": "cpp"
 	}
 }

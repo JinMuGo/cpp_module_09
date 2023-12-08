@@ -30,4 +30,8 @@ all bonus:
 fclean clean re:
 	$(Q)$(foreach dir, $(DIRS), $(MAKE) -C $(dir) $@;)
 
-.PHONY: all clean fclean re bonus $(DIRS)
+test: 
+	$(MAKE) ex02
+	$(MAKE) -C test
+
+.PHONY: all clean fclean re bonus $(DIRS) test

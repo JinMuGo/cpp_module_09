@@ -9,13 +9,12 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/ex02/PmergeMe",
-			"args": ["3", "2"],
+			"args": ["99134505", "197970682", "143936045"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb"
 		}
-
 	]
 }

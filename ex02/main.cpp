@@ -45,13 +45,14 @@ void check(void) {
 
 int main(const int ac, const char** av) {
 	_printPmergeMe();
-	// atexit(check);
-
+	atexit(check);
+	
 	try {
 		if (ac == 1)
 			throw Error::error(AT_LEAST_ARGS, __func__, __FILE__, __LINE__);
 		if (ac >= std::numeric_limits<int>::max())
 			throw Error::error(TOO_MANY_ARGS, __func__, __FILE__, __LINE__);
+		_printUnSortArgv(ac, av);
 		Parser parser(ac, av);
 		PmergeMe pm(ac, av);
 

@@ -67,8 +67,6 @@ void Vec::initMainChain(vecPair& src, std::vector<int>& dst) {
 	dst.push_back(src.begin()->second);
 	for (vecPairCiter it = src.begin(); it != src.end(); ++it) {
 		dst.push_back(it->first);
-		if (it->second == -1)
-			src.erase(it);
 	}
 }
 
@@ -77,15 +75,24 @@ void Vec::FJmergeInsertionsort(const int ac, const char**& av) {
 	this->sortPair(this->_pairVec.begin(), this->_pairVec.end() - 1);
 	this->initMainChain(this->_pairVec, *this);
 	this->binaryInsertion(this->_pairVec, *this, Parser::_makeJacobSthalVec(ac / 2));
+	if (ac % 2 == 0) {
+		int targetVal = std::atoi(av[ac - 1]);
+		this->insert(std::upper_bound(this->begin(), this->end(), targetVal), targetVal);
+	}
 }
 
 void Vec::binaryInsertion(const vecPair& src, std::vector<int>& dst, const std::vector<int>& jacobSthal) {
 	if (jacobSthal.size() == 0)
 		return;
+	int size = src.size();
 	int cnt = 0;
 	for (vecCIter cit = jacobSthal.begin() + 1; cit != jacobSthal.end(); ++cit) {
 		int idx = *cit;
 		while (idx > *(cit - 1)) {
+			if (size <= idx - 1) {
+				--idx;
+				continue;
+			}
 			const int targetVal = src[idx - 1].second;
 			const vecIter boundIt = dst.begin() + idx + cnt > dst.end() ? dst.end() : dst.begin() + idx + cnt;
 			const vecIter insertIt = std::upper_bound(dst.begin(), boundIt, targetVal);

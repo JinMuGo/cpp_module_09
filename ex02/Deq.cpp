@@ -38,8 +38,6 @@ void Deq::initMainChain(deqPair& src, std::deque<int>& dst) {
 	dst.push_back(src.begin()->second);
 	for (deqPairIter it = src.begin(); it != src.end(); ++it) {
 		dst.push_back(it->first);
-		if (it->second == -1)
-			src.erase(it);
 	}
 }
 
@@ -77,15 +75,24 @@ void Deq::FJmergeInsertionsort(const int ac, const char**& av) {
 	this->sortPair(this->_pairDeq.begin(), this->_pairDeq.end() - 1);
 	this->initMainChain(this->_pairDeq, *this);
 	this->binaryInsertion(this->_pairDeq, *this, Parser::_makeJacobSthalVec(ac / 2));
+	if (ac % 2 == 0) {
+		int targetVal = std::atoi(av[ac - 1]);
+		this->insert(std::upper_bound(this->begin(), this->end(), targetVal), targetVal);
+	}
 }
 
 void Deq::binaryInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal) {
 	if (jacobSthal.size() == 0)
 		return;
+	int size = src.size();
 	int cnt = 0;
 	for (vecCIter cit = jacobSthal.begin() + 1; cit != jacobSthal.end(); ++cit) {
 		int idx = *cit;
 		while (idx > *(cit - 1)) {
+			if (size <= idx - 1) {
+				--idx;
+				continue;
+			}
 			const int targetVal = src[idx - 1].second;
 			const deqIter boundIt = dst.begin() + idx + cnt > dst.end() ? dst.end() : dst.begin() + idx + cnt;
 			const deqIter insertIt = std::upper_bound(dst.begin(), boundIt, targetVal);

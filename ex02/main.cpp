@@ -39,20 +39,19 @@ static inline void _printSortArgv(const std::list<int>& list) {
 	std::cout << std::endl;
 }
 
-void check(void) {
-	system("leaks PmergeMe");
-}
+// void check(void) {
+// 	system("leaks PmergeMe");
+// }
 
 int main(const int ac, const char** av) {
 	_printPmergeMe();
-	atexit(check);
-	
+	// atexit(check);
+
 	try {
 		if (ac == 1)
 			throw Error::error(AT_LEAST_ARGS, __func__, __FILE__, __LINE__);
 		if (ac >= std::numeric_limits<int>::max())
 			throw Error::error(TOO_MANY_ARGS, __func__, __FILE__, __LINE__);
-		_printUnSortArgv(ac, av);
 		Parser parser(ac, av);
 		PmergeMe pm(ac, av);
 
@@ -66,8 +65,10 @@ int main(const int ac, const char** av) {
 		std::cout << parser << pm.getVec() << std::endl;
 		std::cout << parser << pm.getDeq() << std::endl;
 		std::cout << parser << pm.getList() << std::endl;
-	} catch (const std::exception& e) {
+	} catch (const Error& e) {
 		std::cerr << e.what() << '\n';
+		if (e.getStatus())
+			return e.getStatus();
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

@@ -21,16 +21,20 @@ class Error : public std::exception {
 	const std::string _func;
 	const std::string _file;
 	const std::string _full;
+	int _status;
 	Error();
 
    public:
 	Error(const Error& obj);
 	Error(const char* prompt, const char* func, const char* file, const int line);
+	Error(const char* prompt, const char* func, const char* file, const int line, const int status);
 	virtual ~Error() throw();
 	Error& operator=(const Error& obj);
 	static std::string intToString(const int& num);
-	const char* what() const throw();
 	static const Error error(const char* msg, const char* func, const char* file, const int line);
+	static const Error error(const char* msg, const char* func, const char* file, const int line, const int status);
+	const char* what() const throw();
+	int getStatus() const;
 };
 
 #endif

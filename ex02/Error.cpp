@@ -26,7 +26,18 @@ Error::Error(const char* prompt, const char* func, const char* file, const int l
 	  _func(func),
 	  _file(file),
 	  _full(_file + ":" + intToString(line) + ": " + RED + "error: " RESET + _prompt + " reported by " GREEN + _func +
-			RESET + " function ") {
+			RESET + " function "),
+	  _status(0) {
+	VERBOSE(ERR_CTOR);
+}
+
+Error::Error(const char* prompt, const char* func, const char* file, const int line, const int status)
+	: _prompt(prompt),
+	  _func(func),
+	  _file(file),
+	  _full(_file + ":" + intToString(line) + ": " + RED + "error: " RESET + _prompt + " reported by " GREEN + _func +
+			RESET + " function "),
+	  _status(status) {
 	VERBOSE(ERR_CTOR);
 }
 
@@ -53,8 +64,16 @@ const Error Error::error(const char* msg, const char* func, const char* file, co
 	return Error(msg, func, file, line);
 }
 
+const Error Error::error(const char* msg, const char* func, const char* file, const int line, const int status) {
+	return Error(msg, func, file, line, status);
+}
+
 std::string Error::intToString(const int& num) {
 	std::ostringstream os;
 	os << num;
 	return os.str();
+}
+
+int Error::getStatus() const {
+	return _status;
 }

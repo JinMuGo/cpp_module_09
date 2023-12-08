@@ -92,7 +92,7 @@ void PmergeMe::confirmSort() const {
 		if (_deq[i] != *cit || _vec[i] != *cit) {
 			std::cout << "index: " << i << " list: " << *cit << " deque: " << _deq[i] << " vector: " << _vec[i]
 					  << std::endl;
-			throw Error::error(INVALID_SORT, __func__, __FILE__, __LINE__);
+			throw Error::error(INVALID_SORT, __func__, __FILE__, __LINE__, 42);
 		}
 	}
 }

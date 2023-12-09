@@ -18,8 +18,20 @@ class GroupIterator {
 	typedef typename std::iterator_traits<Iterator>::pointer pointer;
 	typedef typename std::iterator_traits<Iterator>::reference reference;
 
-	GroupIterator(){};
+	// OCF
 	GroupIterator(Iterator it, std::size_t size) : _it(it), _size(size){};
+
+	GroupIterator(const GroupIterator& obj) : _it(obj._it), _size(obj._size){};
+
+	GroupIterator operator=(const GroupIterator& obj) {
+		if (this == &obj)
+			return *this;
+		_it = obj._it;
+		_size = obj._size;
+		return *this;
+	};
+
+	~GroupIterator(){};
 
 	// Member access
 	iterator_type base() const { return _it; }
@@ -67,8 +79,6 @@ class GroupIterator {
 	// Element access operators
 
 	reference operator[](difference_type pos) const { return _it[pos * _size + _size - 1]; }
-
-	~GroupIterator(){};
 };
 // Comparison operators
 

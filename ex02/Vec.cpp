@@ -12,8 +12,7 @@
 
 #include "Vec.hpp"
 
-Vec::Vec(const int ac, const char**& av) : std::vector<int>(), AmyContainer() {
-	this->reserve(ac - 1);
+Vec::Vec(const int ac, const char**& av) : std::vector<int>(ac - 1), AmyContainer() {
 	VERBOSE(VEC_DFLT_CTOR);
 	for (int i = 1; i < ac; ++i) {
 		this->operator[](i - 1) = std::atoi(av[i]);	 // (*this)

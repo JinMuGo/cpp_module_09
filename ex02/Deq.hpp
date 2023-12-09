@@ -17,18 +17,12 @@
 
 class Deq : public std::deque<int>, public AmyContainer {
    private:
-	std::deque<std::pair<int, int> > _pairDeq;
-	void binaryInsertion(const deqPair& src, std::deque<int>& dst, const std::vector<int>& jacobSthal);
-	void sortPair(const deqPairIter begin, const deqPairIter end);
-	void sortEachPair(deqPairIter begin, const deqPairIter mid, deqPairIter end);
-	void initMainChain(deqPair& src, std::deque<int>& dst);
-
    public:
-	Deq();
+	Deq(const int ac, const char**& av);
 	Deq(const Deq& obj);
 	Deq& operator=(const Deq& obj);
 	virtual ~Deq();
-	virtual void FJmergeInsertionsort(const int ac, const char**& av);
+	virtual void FJmergeInsertionsort();
 };
 
 std::ostream& operator<<(std::ostream& os, const Deq& obj);

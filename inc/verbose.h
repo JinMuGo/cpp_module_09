@@ -1,17 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   verbose.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 09:44:26 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/28 13:09:16 by jgo              ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#ifndef VERSION_H
-#define VERSION_H
+#ifndef VERBOSE_H
+#define VERBOSE_H
 
 #include "color.h"
 
@@ -32,4 +20,37 @@
 	if (V)           \
 		std::cout << STR << std::endl;
 #endif
+
+#ifndef VERBOSE_VAR
+#define VERBOSE_VAR(VAR) \
+	if (V)               \
+		std::cout << #VAR << ": " << VAR << std::endl;
+#endif
+
+#ifndef VERBOSE_TWO_VARS
+#define VERBOSE_TWO_VARS(VAR1, VAR2) \
+	if (V)                           \
+		std::cout << #VAR1 << ": " << VAR1 << " " << #VAR2 << ": " << VAR2 << std::endl;
+#endif
+
+#ifndef VERBOSE_CONTAINER
+#define VERBOSE_CONTAINER(IT_TYPE, BEGIN, END)      \
+	if (V) {                                        \
+		for (IT_TYPE it = BEGIN; it != END; ++it) { \
+			std::cout << *it << " ";                \
+		}                                           \
+		std::cout << std::endl;                     \
+	}
+#endif
+
+#ifndef VERBOSE_CONTAINER2
+#define VERBOSE_CONTAINER2(IT_TYPE, BEGIN, END)     \
+	if (V) {                                        \
+		for (IT_TYPE it = BEGIN; it != END; ++it) { \
+			std::cout << **it << " ";               \
+		}                                           \
+		std::cout << std::endl;                     \
+	}
+#endif
+
 #endif

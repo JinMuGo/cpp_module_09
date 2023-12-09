@@ -19,6 +19,7 @@
 #include <iostream>
 #include "Parser.hpp"
 #include "color.h"
+#include "fj.hpp"
 #include "verbose.h"
 
 #define MYCONT_DFLT_CTOR GREEN "- myContainer: Default constructor called" RESET

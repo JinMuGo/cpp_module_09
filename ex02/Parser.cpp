@@ -124,34 +124,6 @@ void Parser::_checkAv(const int& ac, const char**& av) {
 		Parser::_isValidArg(av[i], endptr);
 }
 
-void Parser::_makeVecPair(std::vector<std::pair<int, int> >& vec, const int& ac, const char**& av) {
-	VERBOSE(PRS_MEMBER_FUNC_CALL);
-	int i = 1;
-	while (i < ac - 1) {
-		const int lhs = std::atoi(av[i]);
-		const int rhs = std::atoi(av[i + 1]);
-		if (lhs > rhs)
-			vec.push_back(std::make_pair(lhs, rhs));
-		else
-			vec.push_back(std::make_pair(rhs, lhs));
-		i += 2;
-	}
-}
-
-void Parser::_makeDeqPair(std::deque<std::pair<int, int> >& deq, const int& ac, const char**& av) {
-	VERBOSE(PRS_MEMBER_FUNC_CALL);
-	int i = 1;
-	while (i < ac - 1) {
-		const int lhs = std::atoi(av[i]);
-		const int rhs = std::atoi(av[i + 1]);
-		if (lhs > rhs)
-			deq.push_back(std::make_pair(lhs, rhs));
-		else
-			deq.push_back(std::make_pair(rhs, lhs));
-		i += 2;
-	}
-}
-
 std::ostream& operator<<(std::ostream& os, const Parser& obj) {
 	return os << "Time to process a range of " << obj.getAc() - 1;
 }

@@ -68,9 +68,10 @@
 		"vector": "cpp",
 		"filesystem": "cpp",
 		"list": "cpp",
-		"__verbose_abort": "cpp",
-		"charconv": "cpp",
-		"clocale": "cpp",
-		"variant": "cpp"
+		"numeric": "cpp",
+		"random": "cpp",
+		"__functional_03": "cpp",
+		"__functional_base_03": "cpp",
+		"memory_resource": "cpp"
 	}
 }

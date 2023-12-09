@@ -35,9 +35,7 @@ List& List::operator=(const List& obj) {
 	return (*this);
 }
 
-void List::FJmergeInsertionsort(const int ac, const char**& av) {
-	(void)ac;
-	(void)av;
+void List::FJmergeInsertionsort() {
 	this->sort();
 }
 

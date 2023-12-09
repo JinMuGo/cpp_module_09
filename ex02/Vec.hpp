@@ -17,18 +17,12 @@
 
 class Vec : public std::vector<int>, public AmyContainer {
    private:
-	std::vector<std::pair<int, int> > _pairVec;
-	void binaryInsertion(const vecPair& pend, std::vector<int>& main, const std::vector<int>& jacobSthal);
-	void sortPair(const vecPairIter begin, const vecPairIter end);
-	void sortEachPair(vecPairIter begin, const vecPairIter mid, vecPairIter end);
-	void initMainChain(vecPair& src, std::vector<int>& dst);
-
    public:
-	Vec();
+	Vec(const int ac, const char**& av);
 	Vec(const Vec& obj);
 	virtual ~Vec();
 	Vec& operator=(const Vec& obj);
-	virtual void FJmergeInsertionsort(const int ac, const char**& av);
+	virtual void FJmergeInsertionsort();
 };
 
 std::ostream& operator<<(std::ostream& os, const Vec& obj);

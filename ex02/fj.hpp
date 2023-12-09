@@ -2,7 +2,7 @@
 #ifndef FJ_HPP
 #define FJ_HPP
 
-#include "group_iterator.hpp"
+#include "GroupIterator.hpp"
 
 // unsigned long	4	unsigned long int	0 ~ 4,294,967,295
 const static std::size_t jacobsthal_diff[] = {

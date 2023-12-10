@@ -25,45 +25,30 @@ struct myLess {
 template <typename GroupIterator, typename Compare>
 void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare compare) {
 	typename std::iterator_traits<GroupIterator>::difference_type size = last - first;
-	VERBOSE_VAR(size);
 	if (size < 2)
 		return;
 	const bool has_stray = (size % 2 != 0);
 
 	// Group elements by pairs
 	const GroupIterator end = has_stray ? ::prev(last) : last;
-	VERBOSE_CONTAINER(typename GroupIterator::iterator_type, first.base(), end.base());
 	for (GroupIterator it = first; it != end; it += 2) {
-		VERBOSE_TWO_VARS(it[0], it[1]);
 		if (compare(it[1], it[0]))
 			::iter_swap(it, ::next(it));
 	}
 
-	VERBOSE("after swap");
-	VERBOSE_CONTAINER(typename GroupIterator::iterator_type, first.base(), end.base());
-	VERBOSE_VAR(*end);
 	merge_insertion_sort_impl(make_group_iterator(first, 2), make_group_iterator(end, 2), compare);
-
-	VERBOSE_VAR(size);
-	VERBOSE("and first to end:");
-	VERBOSE_CONTAINER(typename GroupIterator::iterator_type, first.base(), end.base());
 
 	std::list<GroupIterator> chain;
 	chain.push_back(first);
 	chain.push_back(::next(first));
-
-	VERBOSE_CONTAINER2(typename std::list<GroupIterator>::iterator, chain.begin(), chain.end());
 
 	// Upper bounds for the insertion of pend elemtns
 	std::vector<typename std::list<GroupIterator>::iterator> pend;
 	pend.reserve((size + 1) / 2 - 1);
 	for (GroupIterator it = first + 2; it != end; it += 2) {
 		typename std::list<GroupIterator>::iterator tmp = chain.insert(chain.end(), ::next(it));
-		VERBOSE_VAR(*::next(it));
 		pend.push_back(tmp);
 	}
-
-	VERBOSE_VAR(pend.size());
 
 	if (has_stray)
 		pend.push_back(chain.end());
@@ -75,7 +60,6 @@ void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare 
 	for (int k = 0;; ++k) {
 		typename std::list<GroupIterator>::difference_type dist = jacobsthal_diff[k];
 
-		VERBOSE_TWO_VARS(dist, ::distance(cur_pend, pend.end()));
 		if (dist > static_cast<typename std::list<GroupIterator>::difference_type>(::distance(cur_pend, pend.end())))
 			break;
 
@@ -89,8 +73,6 @@ void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare 
 
 			typename std::list<GroupIterator>::iterator insertion_pos =
 				std::upper_bound(chain.begin(), *pe, *it, myLess<Compare, GroupIterator>(compare));
-			VERBOSE("after");
-			VERBOSE_VAR(*it);
 			chain.insert(insertion_pos, it);
 		} while (pe != cur_pend);
 
@@ -98,11 +80,9 @@ void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare 
 		std::advance(cur_pend, dist);
 	}
 
-	VERBOSE("after binary insertion");
 	while (cur_pend != pend.end()) {
 		typename std::list<GroupIterator>::iterator insertion_pos =
 			std::upper_bound(chain.begin(), *cur_pend, *cur_it, myLess<Compare, GroupIterator>(compare));
-		VERBOSE_VAR(*cur_it);
 		chain.insert(insertion_pos, cur_it);
 		cur_it += 2;
 		++cur_pend;
@@ -116,15 +96,11 @@ void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare 
 		cache.insert(cache.end(), begin, end);
 	}
 
-	VERBOSE_CONTAINER(typename std::vector<typename std::iterator_traits<GroupIterator>::value_type>::iterator,
-					  cache.begin(), cache.end());
 	typename GroupIterator::iterator_type dest = first.base();
 	for (typename std::vector<typename std::iterator_traits<GroupIterator>::value_type>::iterator it = cache.begin();
 		 it != cache.end(); ++dest, ++it) {
 		*dest = *it;
 	}
-
-	VERBOSE_CONTAINER(typename GroupIterator::iterator_type, first.base(), end.base());
 }
 
 template <typename Iterator, typename Compare>

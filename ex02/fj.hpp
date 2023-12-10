@@ -59,6 +59,7 @@ void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare 
 	pend.reserve((size + 1) / 2 - 1);
 	for (GroupIterator it = first + 2; it != end; it += 2) {
 		typename std::list<GroupIterator>::iterator tmp = chain.insert(chain.end(), ::next(it));
+		VERBOSE_VAR(*::next(it));
 		pend.push_back(tmp);
 	}
 
@@ -88,17 +89,20 @@ void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare 
 
 			typename std::list<GroupIterator>::iterator insertion_pos =
 				std::upper_bound(chain.begin(), *pe, *it, myLess<Compare, GroupIterator>(compare));
+			VERBOSE("after");
+			VERBOSE_VAR(*it);
 			chain.insert(insertion_pos, it);
-
 		} while (pe != cur_pend);
 
 		std::advance(cur_it, dist * 2);
 		std::advance(cur_pend, dist);
 	}
 
+	VERBOSE("after binary insertion");
 	while (cur_pend != pend.end()) {
 		typename std::list<GroupIterator>::iterator insertion_pos =
 			std::upper_bound(chain.begin(), *cur_pend, *cur_it, myLess<Compare, GroupIterator>(compare));
+		VERBOSE_VAR(*cur_it);
 		chain.insert(insertion_pos, cur_it);
 		cur_it += 2;
 		++cur_pend;

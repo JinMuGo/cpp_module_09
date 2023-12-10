@@ -40,7 +40,7 @@ static inline std::string _judgeDataPath() {
 	const char* getCwd = getcwd(NULL, 0);
 
 	if (getCwd == NULL)
-		Error::error(std::strerror(errno), __func__, __FILE__, __LINE__);
+		throw Error::error(std::strerror(errno), __func__, __FILE__, __LINE__);
 	const std::string curPath = getCwd;
 	delete getCwd;
 
@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
 	_printBitcoinExchange();
 	try {
 		if (argc != 2)
-			Error::error(ARG_NUM_ERR, __func__, __FILE__, __LINE__);
+			throw Error::error(ARG_NUM_ERR, __func__, __FILE__, __LINE__);
 		BitcoinExchange btc(_judgeDataPath());
 		btc.exchange(argv[1]);
 	} catch (const std::exception& e) {

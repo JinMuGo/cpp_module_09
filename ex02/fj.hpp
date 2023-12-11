@@ -63,7 +63,9 @@ void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare 
 		if (dist > static_cast<typename std::list<GroupIterator>::difference_type>(::distance(cur_pend, pend.end())))
 			break;
 
-		// 재귀가 2씩 증가 하기 때문에 dist에 2를 곱해준다.이미 이전 recursive에서 정렬되었기 때문에.
+		// pend와 main chain의 끝으로 이동하기 위해 cur_it을 dist * 2만큼 이동 (왜냐하면 cur_it는 main chain의 jacob stahal diff의 시작 점이기 때문)
+		// pend는 이전에 main chain에 삽입된 groupIterator들의 위치를 가리키고 있기 때문에 dist만큼 이동하면 된다.
+		// next를 하는 이유는 do while문을 사용하여 먼저 한번 수행하기 위해서이다.
 		GroupIterator it = ::next(cur_it, dist * 2);
 		typename std::vector<typename std::list<GroupIterator>::iterator>::iterator pe = ::next(cur_pend, dist);
 
@@ -80,6 +82,7 @@ void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare 
 		std::advance(cur_pend, dist);
 	}
 
+	// 이전 jacobsthal diff에서 pend에 남은 요소들을 binary insertion로 넣는 과정.
 	while (cur_pend != pend.end()) {
 		typename std::list<GroupIterator>::iterator insertion_pos =
 			std::upper_bound(chain.begin(), *cur_pend, *cur_it, myLess<Compare, GroupIterator>(compare));
@@ -88,6 +91,7 @@ void merge_insertion_sort_impl(GroupIterator first, GroupIterator last, Compare 
 		++cur_pend;
 	}
 
+	// 이번 recursion에서의 main chain을 cache에 저장 하는 과정. (이전 recursion에서는 현재 size / 2만큼의 요소가 있었고, 이번 recursion에서는 size만큼의 요소가 있기 때문에 size만큼의 cache를 만들어야 한다.)
 	std::vector<typename std::iterator_traits<GroupIterator>::value_type> cache;
 	cache.reserve(size);
 	for (typename std::list<GroupIterator>::iterator it = chain.begin(); it != chain.end(); ++it) {
